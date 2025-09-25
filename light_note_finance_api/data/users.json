@@ -1,0 +1,14 @@
+[
+  {
+    "points": 100,
+    "settings": {
+      "hasBookmarkFeature": true,
+      "hasHighlightFeature": false,
+      "canChooseBooks": true,
+      "dailySummaryCount": 15
+    },
+    "id": "d6571fe1-e41c-4cb0-b25d-8a381ace1095",
+    "createdAt": "2025-09-25T19:48:57.581771",
+    "updatedAt": "2025-09-25T19:48:57.581779"
+  }
+]

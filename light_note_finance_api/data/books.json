@@ -1,0 +1,18 @@
+[
+  {
+    "title": "測試書籍",
+    "description": "這是一本測試用的書籍",
+    "imageUrl": "https://example.com/image.jpg",
+    "summaries": [
+      {
+        "content": "這是第一個測試摘要內容",
+        "order": 1,
+        "id": "90c17285-bfd0-4aa0-a61a-4c706ccf3cd9",
+        "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
+      }
+    ],
+    "id": "5ac0a60b-d884-4ded-ad18-648bde4719f8",
+    "createdAt": "2025-09-25T19:48:18.035392",
+    "updatedAt": "2025-09-25T19:48:41.180688"
+  }
+]

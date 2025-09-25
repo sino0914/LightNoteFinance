@@ -1,0 +1,9 @@
+{
+  "points": 100,
+  "settings": {
+    "hasBookmarkFeature": true,
+    "hasHighlightFeature": false,
+    "canChooseBooks": true,
+    "dailySummaryCount": 15
+  }
+}

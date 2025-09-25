@@ -34,7 +34,12 @@
       "Bash(npm run server:*)",
       "Bash(timeout:*)",
       "Bash(PORT=3002 node server.js)",
-      "Bash(tasklist:*)"
+      "Bash(tasklist:*)",
+      "Bash(mkdir:*)",
+      "Bash(python:*)",
+      "Bash(venvScripts:*)",
+      "Bash(pip install:*)",
+      "Bash(.venvScriptsactivate.bat)"
     ],
     "deny": [],
     "ask": []
