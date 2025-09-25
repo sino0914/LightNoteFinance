@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": "book_001",
+      "title": "範例書籍",
+      "image": "/images/sample-book.jpg",
+      "status": "active",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "summaries": [
+        {
+          "id": "summary_001",
+          "content": "這是一個範例摘要，展示書籍摘要的內容格式。",
+          "createdAt": "2024-01-01T00:00:00Z"
+        }
+      ]
+    }
+  ]
+}
