@@ -1,0 +1,188 @@
+.quick-summary-input {
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.quick-summary-input.disabled {
+  opacity: 0.6;
+}
+
+.input-container {
+  position: relative;
+  background: white;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.input-container:hover {
+  border-color: #007bff;
+}
+
+.quick-summary-input.expanded .input-container {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.quick-input {
+  width: 100%;
+  border: none;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.quick-input:focus {
+  outline: none;
+}
+
+.quick-input::placeholder {
+  color: #999;
+  transition: color 0.2s ease;
+}
+
+.quick-input:disabled {
+  cursor: not-allowed;
+  background: #f8f9fa;
+}
+
+.quick-input:disabled::placeholder {
+  color: #ccc;
+}
+
+.quick-summary-input:not(.expanded) .quick-input {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.input-actions {
+  padding: 12px 16px;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f3f4;
+  background: #fafbfc;
+  gap: 12px;
+}
+
+.input-hints {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.char-count {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.char-count.over-limit {
+  color: #dc3545;
+}
+
+.hint {
+  font-size: 11px;
+  color: #999;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #545b62;
+}
+
+/* 動畫效果 */
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 100px;
+    opacity: 1;
+  }
+}
+
+.quick-summary-input.expanded .input-actions {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .input-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .input-hints {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .action-buttons {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hint {
+    display: none; /* 在小屏幕上隱藏提示文字 */
+  }
+}

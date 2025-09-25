@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SummaryForm from './SummaryForm';
 import SummaryCard from './SummaryCard';
+import QuickSummaryInput from './QuickSummaryInput';
 import { bookService } from '../services/bookService';
 import './SummaryManager.css';
 
@@ -33,6 +34,18 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
     onUpdate(); // 通知父組件更新
   };
 
+  const handleQuickAdd = (content) => {
+    return new Promise((resolve, reject) => {
+      try {
+        bookService.addSummary(bookId, content);
+        onUpdate(); // 通知父組件更新
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
   const handleFormCancel = () => {
     setShowForm(false);
     setEditingSummary(null);
@@ -53,7 +66,7 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
         <h2>書籍摘要</h2>
         <div className="header-info">
           <span className="summary-count">{summaries.length} 個摘要</span>
-          {isBookActive && (
+          {false && (
             <button className="btn btn-primary" onClick={handleAddSummary}>
               新增摘要
             </button>
@@ -75,6 +88,13 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
         />
       )}
 
+      {isBookActive && (
+        <QuickSummaryInput
+          onSubmit={handleQuickAdd}
+          disabled={!isBookActive}
+        />
+      )}
+
       <div className="summaries-container">
         {summaries.length === 0 ? (
           <div className="empty-summaries">
@@ -82,13 +102,13 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
             <h3>還沒有任何摘要</h3>
             <p>
               {isBookActive
-                ? '開始新增您的第一個摘要吧！摘要可以幫助您記錄書中的重要內容和想法。'
+                ? '開始新增您的第一個摘要吧！可以使用上方的快速輸入框，或點擊下方按鈕開啟詳細編輯器。'
                 : '此書籍目前沒有任何摘要。'
               }
             </p>
             {isBookActive && (
               <button className="btn btn-primary" onClick={handleAddSummary}>
-                新增第一個摘要
+                使用詳細編輯器
               </button>
             )}
           </div>

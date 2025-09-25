@@ -23,6 +23,12 @@
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.book-main-info:hover {
+  background-color: rgba(0, 123, 255, 0.05);
 }
 
 .book-image-small {
@@ -63,6 +69,25 @@
 
 .book-status {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expand-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.expand-arrow {
+  font-size: 12px;
+  color: #666;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.expand-arrow.expanded {
+  transform: rotate(180deg);
 }
 
 .status-badge {
