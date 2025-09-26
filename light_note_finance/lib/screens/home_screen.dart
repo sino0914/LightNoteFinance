@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math';
 import '../providers/user_provider.dart';
 import '../providers/book_provider.dart';
 import '../widgets/daily_summary_banner.dart';
@@ -29,10 +30,52 @@ class _HomeScreenState extends State<HomeScreen> {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     if (userProvider.user != null) {
-      await bookProvider.unlockDailySummaries(
-        userProvider.user!.settings.dailySummaryCount
-      );
+      // 檢查是否為初次登入
+      if (userProvider.user!.isFirstLogin) {
+        // 初次登入：檢查今天是否已經解鎖過
+        final today = DateTime.now();
+        final todayKey = '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
+
+        if (!userProvider.user!.dailyUnlockHistory.containsKey(todayKey)) {
+          // 今天還沒解鎖，執行解鎖邏輯
+          await bookProvider.unlockDailySummaries(
+            userProvider.user!.settings.dailySummaryCount
+          );
+        }
+      } else {
+        // 非初次登入：顯示隨機已解鎖摘要
+        await _loadRandomUnlockedSummaries();
+      }
+
       await userProvider.updateWeeklyActivity();
+    }
+  }
+
+  Future<void> _loadRandomUnlockedSummaries() async {
+    final bookProvider = Provider.of<BookProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    if (userProvider.user != null && bookProvider.books.isNotEmpty) {
+      // 獲取已解鎖的書籍
+      final unlockedBooks = bookProvider.books.where((book) => book.isUnlocked).toList();
+
+      if (unlockedBooks.isNotEmpty) {
+        // 隨機選擇一本已解鎖的書
+        final random = Random();
+        final randomBook = unlockedBooks[random.nextInt(unlockedBooks.length)];
+
+        // 獲取該書籍的已解鎖摘要
+        final unlockedSummaries = randomBook.summaries.where((summary) => summary.isUnlocked).toList();
+
+        if (unlockedSummaries.isNotEmpty) {
+          // 隨機打亂摘要順序，然後取最多10則
+          unlockedSummaries.shuffle(random);
+          final randomSummaries = unlockedSummaries.take(10).toList();
+
+          // 設置為今日摘要顯示
+          bookProvider.setTodaySummaries(randomSummaries);
+        }
+      }
     }
   }
 

@@ -85,5 +85,1531 @@
     "id": "1aa42827-a044-4abc-82c3-0285b3d0a958",
     "createdAt": "2025-09-26T11:59:55.999551",
     "updatedAt": "2025-09-26T11:59:55.999848"
+  },
+  {
+    "title": "財務自由的第一步",
+    "description": "本書探討如何建立正確的理財觀念，逐步累積資產，邁向財務自由。",
+    "imageUrl": "../uploads/book-cover-1758857992-87965.png",
+    "summaries": [
+      {
+        "content": "巴菲特的智慧告訴我們要讓被動收入覆蓋支出。",
+        "order": 1,
+        "id": "1bdefd83-df85-4ac6-817e-0edec2373a3c",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資的第一步是持續紀錄收支。",
+        "order": 2,
+        "id": "0021d570-5790-4125-a75f-4786325a89a0",
+        "bookId": "book-1"
+      },
+      {
+        "content": "現金流的重要性在於讓被動收入覆蓋支出。",
+        "order": 3,
+        "id": "a93cd220-4ae9-4382-aad1-41b6ed5bf495",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資的第一步是避免盲目追高殺低。",
+        "order": 4,
+        "id": "55c77b05-57c9-43f6-946f-98b53ff00dad",
+        "bookId": "book-1"
+      },
+      {
+        "content": "風險管理的關鍵在於分散風險。",
+        "order": 5,
+        "id": "af634756-1b79-4024-9527-2995fb4edc55",
+        "bookId": "book-1"
+      },
+      {
+        "content": "成功的投資人通常會避免盲目追高殺低。",
+        "order": 6,
+        "id": "a459fca0-d128-4e0d-a81b-d291bcd872c3",
+        "bookId": "book-1"
+      },
+      {
+        "content": "要達到財務自由，必須專注於基本面分析。",
+        "order": 7,
+        "id": "c95f2db9-3612-4e1b-b50f-98b1332bd440",
+        "bookId": "book-1"
+      },
+      {
+        "content": "要達到財務自由，必須定期定額投資。",
+        "order": 8,
+        "id": "3db1ba13-fe78-48bb-8afc-8e1037c7c2bb",
+        "bookId": "book-1"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要不被短期波動影響。",
+        "order": 9,
+        "id": "0c6ad070-ba83-4bd8-b4d6-1d691efbd733",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資心態應該是控制情緒。",
+        "order": 10,
+        "id": "39c87537-82e7-4769-8865-5eafb5fb9adc",
+        "bookId": "book-1"
+      },
+      {
+        "content": "現金流的重要性在於避免盲目追高殺低。",
+        "order": 11,
+        "id": "70177886-1be3-4977-a76c-f2753798c8f1",
+        "bookId": "book-1"
+      },
+      {
+        "content": "要達到財務自由，必須控制情緒。",
+        "order": 12,
+        "id": "bc6217d1-f9db-4071-9092-6904027fbc76",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資市場的規律在於專注於基本面分析。",
+        "order": 13,
+        "id": "049c2abf-1c70-4568-991b-9841363385c2",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資心態應該是專注於基本面分析。",
+        "order": 14,
+        "id": "57fabe05-1d3f-4a26-a2fa-b823d2c8028a",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資的第一步是分散風險。",
+        "order": 15,
+        "id": "24b7c92d-4158-4929-85fb-9118e25cfa06",
+        "bookId": "book-1"
+      },
+      {
+        "content": "現金流的重要性在於定期定額投資。",
+        "order": 16,
+        "id": "d317cddd-1494-4a1e-97d5-7898d87db558",
+        "bookId": "book-1"
+      },
+      {
+        "content": "現金流的重要性在於不被短期波動影響。",
+        "order": 17,
+        "id": "005a03f8-9508-41c0-af6b-39a79392e839",
+        "bookId": "book-1"
+      },
+      {
+        "content": "理財應避免讓被動收入覆蓋支出，而專注於長期規劃。",
+        "order": 18,
+        "id": "573dfd9b-834c-4230-8c00-82bb4e3749db",
+        "bookId": "book-1"
+      },
+      {
+        "content": "要達到財務自由，必須耐心持有優質資產。",
+        "order": 19,
+        "id": "16f2933e-3673-48b8-89c2-a5fb4f60c6c8",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資的第一步是持續學習財務知識。",
+        "order": 20,
+        "id": "2ef256e0-2fb5-47d4-ae0a-a3f97132ee7c",
+        "bookId": "book-1"
+      },
+      {
+        "content": "理財應避免控制情緒，而專注於長期規劃。",
+        "order": 21,
+        "id": "6579878e-d713-4e56-bbf4-d2c93c69a3e6",
+        "bookId": "book-1"
+      },
+      {
+        "content": "風險管理的關鍵在於建立緊急預備金。",
+        "order": 22,
+        "id": "e2aebe15-db85-4555-a4dd-e7918804ed14",
+        "bookId": "book-1"
+      },
+      {
+        "content": "理財應避免持續紀錄收支，而專注於長期規劃。",
+        "order": 23,
+        "id": "cf9bcfe4-1a55-4f1c-a2cf-7ac29c5e4d7a",
+        "bookId": "book-1"
+      },
+      {
+        "content": "風險管理的關鍵在於控制情緒。",
+        "order": 24,
+        "id": "1fb2f459-35d3-406e-bda9-2c2274d47a4b",
+        "bookId": "book-1"
+      },
+      {
+        "content": "投資市場的規律在於分散風險。",
+        "order": 25,
+        "id": "4ae3330a-64a8-41f8-8e4b-01fe7a0833d2",
+        "bookId": "book-1"
+      }
+    ],
+    "id": "book-1",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "投資的藝術",
+    "description": "介紹投資市場的基本邏輯與方法，幫助讀者建立長期穩健的投資策略。",
+    "imageUrl": "../uploads/book-cover-1758857992-87965.png",
+    "summaries": [
+      {
+        "content": "投資市場的規律在於定期定額投資。",
+        "order": 1,
+        "id": "d6746cee-0d46-4edf-9eeb-129844061021",
+        "bookId": "book-2"
+      },
+      {
+        "content": "理財應避免耐心持有優質資產，而專注於長期規劃。",
+        "order": 2,
+        "id": "06dbe21d-d304-49f0-bb60-b56c87d3b369",
+        "bookId": "book-2"
+      },
+      {
+        "content": "要達到財務自由，必須讓被動收入覆蓋支出。",
+        "order": 3,
+        "id": "98a8ed97-92cd-48f1-ae93-8f7e728d602c",
+        "bookId": "book-2"
+      },
+      {
+        "content": "投資心態應該是讓被動收入覆蓋支出。",
+        "order": 4,
+        "id": "79c68eea-fcf9-4ab7-a561-ed3109af5dd8",
+        "bookId": "book-2"
+      },
+      {
+        "content": "理財應避免持續學習財務知識，而專注於長期規劃。",
+        "order": 5,
+        "id": "5c622019-a6d6-47a6-83f1-3c2dacf13bdb",
+        "bookId": "book-2"
+      },
+      {
+        "content": "小資族能透過避免盲目追高殺低達成資產成長。",
+        "order": 6,
+        "id": "8997647c-ad3d-4103-9a51-cc6861730d55",
+        "bookId": "book-2"
+      },
+      {
+        "content": "成功的投資人通常會定期定額投資。",
+        "order": 7,
+        "id": "17c7fad2-f866-4058-a921-f39fba84658c",
+        "bookId": "book-2"
+      },
+      {
+        "content": "小資族能透過持續學習財務知識達成資產成長。",
+        "order": 8,
+        "id": "22688156-abcf-4f03-b52c-cb3404323bf9",
+        "bookId": "book-2"
+      },
+      {
+        "content": "理財應避免避免盲目追高殺低，而專注於長期規劃。",
+        "order": 9,
+        "id": "b7f480b8-85bc-4411-9343-35cd00d3c78d",
+        "bookId": "book-2"
+      },
+      {
+        "content": "投資心態應該是持續紀錄收支。",
+        "order": 10,
+        "id": "60f20802-ff6f-432b-98be-ac5e7511ec8b",
+        "bookId": "book-2"
+      },
+      {
+        "content": "現金流的重要性在於專注於基本面分析。",
+        "order": 11,
+        "id": "15b9f626-ef00-4814-b0ae-0aacf79214e8",
+        "bookId": "book-2"
+      },
+      {
+        "content": "小資族能透過定期定額投資達成資產成長。",
+        "order": 12,
+        "id": "9bbddff3-bd9d-4c54-8b2d-e9079100ed0a",
+        "bookId": "book-2"
+      },
+      {
+        "content": "投資的第一步是耐心持有優質資產。",
+        "order": 13,
+        "id": "e6f16397-30ee-48b2-a58c-a3e065488c62",
+        "bookId": "book-2"
+      },
+      {
+        "content": "投資的第一步是持續紀錄收支。",
+        "order": 14,
+        "id": "586447d6-652a-4d5a-a0a7-c040c8b82993",
+        "bookId": "book-2"
+      },
+      {
+        "content": "現金流的重要性在於專注於基本面分析。",
+        "order": 15,
+        "id": "678a29ac-e806-4a99-b91b-07c6cdf1821e",
+        "bookId": "book-2"
+      },
+      {
+        "content": "風險管理的關鍵在於控制情緒。",
+        "order": 16,
+        "id": "b13a3d56-9211-4aee-b645-a3ea09ae16a9",
+        "bookId": "book-2"
+      },
+      {
+        "content": "投資的第一步是不被短期波動影響。",
+        "order": 17,
+        "id": "83421d91-0428-4053-adcc-6d7df410027e",
+        "bookId": "book-2"
+      },
+      {
+        "content": "投資的第一步是定期定額投資。",
+        "order": 18,
+        "id": "6ccac37b-b4ba-4b74-851c-2c0f4e9cc131",
+        "bookId": "book-2"
+      },
+      {
+        "content": "風險管理的關鍵在於分散風險。",
+        "order": 19,
+        "id": "54fe02bf-f955-4e43-969d-80bc5bdc7801",
+        "bookId": "book-2"
+      }
+    ],
+    "id": "book-2",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "ETF致富指南",
+    "description": "ETF是最簡單的投資工具之一，本書帶你了解如何用低成本的方式分散風險。",
+    "imageUrl": "../uploads/book-cover-1758859190-16680.png",
+    "summaries": [
+      {
+        "content": "投資市場的規律在於建立緊急預備金。",
+        "order": 1,
+        "id": "99d4c593-cc5a-4296-a280-f3240efeef9e",
+        "bookId": "book-3"
+      },
+      {
+        "content": "現金流的重要性在於耐心持有優質資產。",
+        "order": 2,
+        "id": "c079d26f-03a3-4938-88f4-d1e386d7caf9",
+        "bookId": "book-3"
+      },
+      {
+        "content": "要達到財務自由，必須耐心持有優質資產。",
+        "order": 3,
+        "id": "b206d51d-9788-4895-9bb5-4517de747861",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資市場的規律在於定期定額投資。",
+        "order": 4,
+        "id": "086478b2-5963-4510-a927-4df4f97446db",
+        "bookId": "book-3"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要建立緊急預備金。",
+        "order": 5,
+        "id": "e6579389-1dff-480f-93a2-2ec65187990c",
+        "bookId": "book-3"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要控制情緒。",
+        "order": 6,
+        "id": "41e8b0cf-aee6-4ad0-b95f-b896f9847a56",
+        "bookId": "book-3"
+      },
+      {
+        "content": "要達到財務自由，必須定期定額投資。",
+        "order": 7,
+        "id": "3e21b002-0e0a-4a46-8cba-f07aaedc271b",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資的第一步是耐心持有優質資產。",
+        "order": 8,
+        "id": "de77cad5-08a9-4acb-8b88-a8640bc7554d",
+        "bookId": "book-3"
+      },
+      {
+        "content": "風險管理的關鍵在於不被短期波動影響。",
+        "order": 9,
+        "id": "540f87b3-5b4a-4e86-af7d-3660d2c3d809",
+        "bookId": "book-3"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要建立緊急預備金。",
+        "order": 10,
+        "id": "3c7b0fcc-54d3-4323-ad71-a334e55b1fc1",
+        "bookId": "book-3"
+      },
+      {
+        "content": "小資族能透過控制情緒達成資產成長。",
+        "order": 11,
+        "id": "366720ec-73c4-46a0-baa9-05f81d0a305b",
+        "bookId": "book-3"
+      },
+      {
+        "content": "要達到財務自由，必須不被短期波動影響。",
+        "order": 12,
+        "id": "7dd8dfd4-dacf-4f8a-aff9-5752f94f59b2",
+        "bookId": "book-3"
+      },
+      {
+        "content": "理財應避免建立緊急預備金，而專注於長期規劃。",
+        "order": 13,
+        "id": "7b96ae51-ab3d-4748-9428-ca5a83590ebb",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資市場的規律在於分散風險。",
+        "order": 14,
+        "id": "5add92b1-0609-4c3f-b531-59ef5cb2ec54",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會持續學習財務知識。",
+        "order": 15,
+        "id": "4e2d12db-bb8e-409d-970d-a30e2f01f805",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資心態應該是定期定額投資。",
+        "order": 16,
+        "id": "08e13673-388b-4478-b89f-3d1337dbabdc",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資心態應該是避免盲目追高殺低。",
+        "order": 17,
+        "id": "74e8bb0f-8f3f-4b65-bb60-6acbbfd9fe62",
+        "bookId": "book-3"
+      },
+      {
+        "content": "小資族能透過避免盲目追高殺低達成資產成長。",
+        "order": 18,
+        "id": "37bb54f2-eb1c-4839-9591-da56af4be210",
+        "bookId": "book-3"
+      },
+      {
+        "content": "風險管理的關鍵在於建立緊急預備金。",
+        "order": 19,
+        "id": "f18b3c60-83ba-410c-bdb1-3b19b538e687",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資市場的規律在於分散風險。",
+        "order": 20,
+        "id": "126d50f5-6955-41eb-a7d6-da535b48cd2e",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會專注於基本面分析。",
+        "order": 21,
+        "id": "e15f45b2-55f0-4d37-ad91-2db6e5460a38",
+        "bookId": "book-3"
+      },
+      {
+        "content": "現金流的重要性在於持續紀錄收支。",
+        "order": 22,
+        "id": "443b1a1b-3062-458b-a241-d2121c4f926b",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資心態應該是持續紀錄收支。",
+        "order": 23,
+        "id": "75bd8361-3b41-4658-9afd-022cd929ed86",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會持續學習財務知識。",
+        "order": 24,
+        "id": "1e999931-a4bd-4e97-97e4-5de084ebe911",
+        "bookId": "book-3"
+      },
+      {
+        "content": "投資的第一步是持續紀錄收支。",
+        "order": 25,
+        "id": "82900489-3dc7-4e06-b21c-999341e7936e",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會持續紀錄收支。",
+        "order": 26,
+        "id": "6106c2fa-0ee3-42f2-8c20-dc6eefceb97c",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會控制情緒。",
+        "order": 27,
+        "id": "d78b7294-6db1-4864-b112-2bbd4095eadf",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會專注於基本面分析。",
+        "order": 28,
+        "id": "676af4f9-4ee1-4597-81ef-f476f05f0c85",
+        "bookId": "book-3"
+      },
+      {
+        "content": "成功的投資人通常會分散風險。",
+        "order": 29,
+        "id": "f69c84fb-1608-4c3b-abbe-b3e7d409b4b0",
+        "bookId": "book-3"
+      }
+    ],
+    "id": "book-3",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "富爸爸窮爸爸啟示錄",
+    "description": "經典理財思維，從思考方式出發，改變對錢的認知與態度。",
+    "imageUrl": "../uploads/book-cover-1758859190-16680.png",
+    "summaries": [
+      {
+        "content": "投資的第一步是控制情緒。",
+        "order": 1,
+        "id": "322ab638-00ed-4ea6-a3f6-6abd2c495c6d",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資的第一步是讓被動收入覆蓋支出。",
+        "order": 2,
+        "id": "e52426fd-e6c8-4bce-b948-2baca7d3c215",
+        "bookId": "book-4"
+      },
+      {
+        "content": "現金流的重要性在於持續學習財務知識。",
+        "order": 3,
+        "id": "8fc9b4cb-b621-4b07-8dc5-c3d9144f024a",
+        "bookId": "book-4"
+      },
+      {
+        "content": "理財應避免持續學習財務知識，而專注於長期規劃。",
+        "order": 4,
+        "id": "238a8add-2456-4a33-9d62-7a685ef8fc62",
+        "bookId": "book-4"
+      },
+      {
+        "content": "成功的投資人通常會持續學習財務知識。",
+        "order": 5,
+        "id": "d7c97ab1-b157-403d-a9ca-1bdc7e2cae7a",
+        "bookId": "book-4"
+      },
+      {
+        "content": "成功的投資人通常會定期定額投資。",
+        "order": 6,
+        "id": "530b2582-9675-4f87-8859-dd11a28a8a56",
+        "bookId": "book-4"
+      },
+      {
+        "content": "風險管理的關鍵在於避免盲目追高殺低。",
+        "order": 7,
+        "id": "7ef934fc-a284-4665-954a-736e80fa8d52",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資市場的規律在於耐心持有優質資產。",
+        "order": 8,
+        "id": "18e6f6a2-06ae-49ad-9b57-bf2fef2d341b",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資的第一步是避免盲目追高殺低。",
+        "order": 9,
+        "id": "bec727c0-5e26-4c37-92b3-2f07643fee0e",
+        "bookId": "book-4"
+      },
+      {
+        "content": "現金流的重要性在於耐心持有優質資產。",
+        "order": 10,
+        "id": "fa839d0d-fbd0-4fb5-9d7b-edc1298924e0",
+        "bookId": "book-4"
+      },
+      {
+        "content": "現金流的重要性在於持續紀錄收支。",
+        "order": 11,
+        "id": "8a980ed3-8fba-4a39-82fc-fe12bf2a265f",
+        "bookId": "book-4"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要分散風險。",
+        "order": 12,
+        "id": "64aef84b-0971-4393-bece-f63b32b63f54",
+        "bookId": "book-4"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要耐心持有優質資產。",
+        "order": 13,
+        "id": "f5e4123c-6d53-4dac-ba62-42577810fd01",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資市場的規律在於建立緊急預備金。",
+        "order": 14,
+        "id": "80231969-f297-4e19-96fc-496ee07cee4d",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資心態應該是分散風險。",
+        "order": 15,
+        "id": "a50c4601-3985-4742-86ed-244a36502c87",
+        "bookId": "book-4"
+      },
+      {
+        "content": "成功的投資人通常會建立緊急預備金。",
+        "order": 16,
+        "id": "26d63587-a659-48e3-ac91-3962577c71c2",
+        "bookId": "book-4"
+      },
+      {
+        "content": "小資族能透過定期定額投資達成資產成長。",
+        "order": 17,
+        "id": "f8b9c81a-b87b-4129-8f75-9b8b1ad06566",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資的第一步是定期定額投資。",
+        "order": 18,
+        "id": "d35b1fe4-94b2-481f-9cb3-e293fabc3715",
+        "bookId": "book-4"
+      },
+      {
+        "content": "要達到財務自由，必須分散風險。",
+        "order": 19,
+        "id": "d4260e2a-6c2a-436b-b6dd-d9d385ca651a",
+        "bookId": "book-4"
+      },
+      {
+        "content": "小資族能透過控制情緒達成資產成長。",
+        "order": 20,
+        "id": "2ff1f969-1294-437b-b73a-5551a7f0b6cc",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資心態應該是耐心持有優質資產。",
+        "order": 21,
+        "id": "06292d3e-daf1-49d0-bc1d-2d6741f2b6f5",
+        "bookId": "book-4"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要避免盲目追高殺低。",
+        "order": 22,
+        "id": "cbad421c-694e-4617-86c7-df5acc14eee0",
+        "bookId": "book-4"
+      },
+      {
+        "content": "要達到財務自由，必須不被短期波動影響。",
+        "order": 23,
+        "id": "7661056c-015c-43b7-bdcf-d15dba07968e",
+        "bookId": "book-4"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要持續學習財務知識。",
+        "order": 24,
+        "id": "ff80da27-3d44-4548-a15b-7ff8d5cc2c16",
+        "bookId": "book-4"
+      },
+      {
+        "content": "成功的投資人通常會耐心持有優質資產。",
+        "order": 25,
+        "id": "d30bbabc-cf83-4456-ac57-1c669c160e9f",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資心態應該是定期定額投資。",
+        "order": 26,
+        "id": "49808a8b-3bf6-411a-87c9-4d6e62f9ceda",
+        "bookId": "book-4"
+      },
+      {
+        "content": "投資的第一步是不被短期波動影響。",
+        "order": 27,
+        "id": "35c1d671-3ea4-4e94-ac0b-8e50251f9094",
+        "bookId": "book-4"
+      },
+      {
+        "content": "成功的投資人通常會專注於基本面分析。",
+        "order": 28,
+        "id": "edff2258-338f-43e0-8164-1a5cc4561ddb",
+        "bookId": "book-4"
+      },
+      {
+        "content": "小資族能透過讓被動收入覆蓋支出達成資產成長。",
+        "order": 29,
+        "id": "8262e2b1-6fd8-490f-8d2d-13f7b24b2b81",
+        "bookId": "book-4"
+      },
+      {
+        "content": "成功的投資人通常會分散風險。",
+        "order": 30,
+        "id": "03eb2154-e669-48d7-b5ba-5bc7a89e5034",
+        "bookId": "book-4"
+      }
+    ],
+    "id": "book-4",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "小資族投資法則",
+    "description": "專為初入職場與收入有限的年輕族群設計的投資策略。",
+    "imageUrl": "../uploads/book-cover-1758857992-87965.png",
+    "summaries": [
+      {
+        "content": "投資心態應該是分散風險。",
+        "order": 1,
+        "id": "2ba54c9e-bff3-4d5c-9541-03fe7e1aa235",
+        "bookId": "book-5"
+      },
+      {
+        "content": "要達到財務自由，必須持續紀錄收支。",
+        "order": 2,
+        "id": "be4af58d-0cb7-4848-99ae-6515e49715b7",
+        "bookId": "book-5"
+      },
+      {
+        "content": "成功的投資人通常會持續學習財務知識。",
+        "order": 3,
+        "id": "3cf69243-5ad1-42d0-ac6b-b6e11fe6f0fb",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資市場的規律在於不被短期波動影響。",
+        "order": 4,
+        "id": "43533bae-0664-47f8-b90c-efc95b032825",
+        "bookId": "book-5"
+      },
+      {
+        "content": "現金流的重要性在於不被短期波動影響。",
+        "order": 5,
+        "id": "ec105f85-4510-4053-8fd9-1b9d928b2b4e",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資的第一步是不被短期波動影響。",
+        "order": 6,
+        "id": "5aecac0b-1b66-4e70-ad75-2c021b93c98b",
+        "bookId": "book-5"
+      },
+      {
+        "content": "現金流的重要性在於建立緊急預備金。",
+        "order": 7,
+        "id": "8709a59e-23c8-4433-8685-00f8d537752e",
+        "bookId": "book-5"
+      },
+      {
+        "content": "風險管理的關鍵在於專注於基本面分析。",
+        "order": 8,
+        "id": "61ec3054-61b0-4c39-af9d-0d49818dea6f",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資心態應該是分散風險。",
+        "order": 9,
+        "id": "f7cf2215-708a-4dc0-8274-d4e956517479",
+        "bookId": "book-5"
+      },
+      {
+        "content": "風險管理的關鍵在於讓被動收入覆蓋支出。",
+        "order": 10,
+        "id": "39b28a7c-240a-4719-abf0-f26b0bc4ca76",
+        "bookId": "book-5"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要專注於基本面分析。",
+        "order": 11,
+        "id": "cd223799-ab10-4490-9ae4-1de88cf5c788",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資心態應該是避免盲目追高殺低。",
+        "order": 12,
+        "id": "93d86828-2588-4ea4-b5db-bdf4020cbcf7",
+        "bookId": "book-5"
+      },
+      {
+        "content": "小資族能透過建立緊急預備金達成資產成長。",
+        "order": 13,
+        "id": "36b4724e-2efe-4690-b572-ca38ff266e0a",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資的第一步是專注於基本面分析。",
+        "order": 14,
+        "id": "15e2c039-f73c-4488-9f09-f7f55dcded36",
+        "bookId": "book-5"
+      },
+      {
+        "content": "理財應避免定期定額投資，而專注於長期規劃。",
+        "order": 15,
+        "id": "80405cdc-6f35-49ee-bfce-2777ac13a910",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資市場的規律在於耐心持有優質資產。",
+        "order": 16,
+        "id": "c5534d18-60cd-481d-acb3-f3e840851f0c",
+        "bookId": "book-5"
+      },
+      {
+        "content": "小資族能透過不被短期波動影響達成資產成長。",
+        "order": 17,
+        "id": "6f47c26d-c208-4267-a54a-c00134d32740",
+        "bookId": "book-5"
+      },
+      {
+        "content": "小資族能透過建立緊急預備金達成資產成長。",
+        "order": 18,
+        "id": "8f088d1f-14b5-4286-85d2-1f34a5174cc9",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資心態應該是建立緊急預備金。",
+        "order": 19,
+        "id": "d0d8b5f9-1fb6-4b25-b70b-a1742343e2e6",
+        "bookId": "book-5"
+      },
+      {
+        "content": "風險管理的關鍵在於專注於基本面分析。",
+        "order": 20,
+        "id": "d3413a41-7e08-4994-84b6-7b88fa792d3c",
+        "bookId": "book-5"
+      },
+      {
+        "content": "小資族能透過耐心持有優質資產達成資產成長。",
+        "order": 21,
+        "id": "84a17f8a-208e-4aa5-8e18-f28b82a46a01",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資心態應該是定期定額投資。",
+        "order": 22,
+        "id": "3bd5c101-02c3-42e6-bff6-3d625d71c762",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資的第一步是不被短期波動影響。",
+        "order": 23,
+        "id": "1e97b93e-0a9c-428e-93e0-dda3bc260edf",
+        "bookId": "book-5"
+      },
+      {
+        "content": "成功的投資人通常會不被短期波動影響。",
+        "order": 24,
+        "id": "934342be-d273-4114-be4c-3589cd927218",
+        "bookId": "book-5"
+      },
+      {
+        "content": "風險管理的關鍵在於持續紀錄收支。",
+        "order": 25,
+        "id": "dffa25d4-5ba5-48df-89fb-53cc431c5dd0",
+        "bookId": "book-5"
+      },
+      {
+        "content": "成功的投資人通常會避免盲目追高殺低。",
+        "order": 26,
+        "id": "bc421c1b-8da4-4805-b72d-70cbb809bd9d",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資的第一步是分散風險。",
+        "order": 27,
+        "id": "7e39a46f-ae02-4fbf-b1f4-97ec4ae97c9a",
+        "bookId": "book-5"
+      },
+      {
+        "content": "要達到財務自由，必須建立緊急預備金。",
+        "order": 28,
+        "id": "2cfa929f-5111-43fe-bee4-fed8be56a7c8",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資市場的規律在於定期定額投資。",
+        "order": 29,
+        "id": "b045da0a-db6e-482f-afa3-1f033de140d8",
+        "bookId": "book-5"
+      },
+      {
+        "content": "投資市場的規律在於定期定額投資。",
+        "order": 30,
+        "id": "c370c860-e5fa-43dd-bcef-9fdabb6fcdfd",
+        "bookId": "book-5"
+      },
+      {
+        "content": "理財應避免持續學習財務知識，而專注於長期規劃。",
+        "order": 31,
+        "id": "e9a5d0c7-45ce-49f2-a19a-59751117bc6c",
+        "bookId": "book-5"
+      },
+      {
+        "content": "現金流的重要性在於建立緊急預備金。",
+        "order": 32,
+        "id": "7e14e5c7-85a7-4519-8739-0667e571a953",
+        "bookId": "book-5"
+      },
+      {
+        "content": "現金流的重要性在於分散風險。",
+        "order": 33,
+        "id": "b5cec954-f02b-4ad4-a9a3-a9990175d0fe",
+        "bookId": "book-5"
+      }
+    ],
+    "id": "book-5",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "財報解析入門",
+    "description": "學會閱讀財務報表，掌握企業真正價值。",
+    "imageUrl": "../uploads/book-cover-1758857992-87965.png",
+    "summaries": [
+      {
+        "content": "要達到財務自由，必須持續學習財務知識。",
+        "order": 1,
+        "id": "4b581799-55ed-4029-9c81-c413891e6412",
+        "bookId": "book-6"
+      },
+      {
+        "content": "小資族能透過不被短期波動影響達成資產成長。",
+        "order": 2,
+        "id": "b0e68406-6534-456b-a4f9-1aef5c4dcb16",
+        "bookId": "book-6"
+      },
+      {
+        "content": "風險管理的關鍵在於讓被動收入覆蓋支出。",
+        "order": 3,
+        "id": "d7cd17ac-6295-4281-bdbc-69ad7a69a363",
+        "bookId": "book-6"
+      },
+      {
+        "content": "投資市場的規律在於耐心持有優質資產。",
+        "order": 4,
+        "id": "9b2e7fb8-7035-4927-99fe-8ccef17cf79e",
+        "bookId": "book-6"
+      },
+      {
+        "content": "理財應避免持續學習財務知識，而專注於長期規劃。",
+        "order": 5,
+        "id": "ed01b063-8863-4a50-b538-07093c374928",
+        "bookId": "book-6"
+      },
+      {
+        "content": "投資的第一步是專注於基本面分析。",
+        "order": 6,
+        "id": "d2a9c049-3892-4a2a-b5d6-309dc4b905e9",
+        "bookId": "book-6"
+      },
+      {
+        "content": "投資心態應該是持續學習財務知識。",
+        "order": 7,
+        "id": "ffcf9706-aa5c-4b57-bcf8-813f96859f2f",
+        "bookId": "book-6"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要耐心持有優質資產。",
+        "order": 8,
+        "id": "bb394eae-2998-4112-a20e-4f12a6c52591",
+        "bookId": "book-6"
+      },
+      {
+        "content": "風險管理的關鍵在於建立緊急預備金。",
+        "order": 9,
+        "id": "e7a9bdc8-96fa-4fab-8a65-1aefdb13c9d2",
+        "bookId": "book-6"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要分散風險。",
+        "order": 10,
+        "id": "58251123-807e-4ad9-9678-b2a166bd6542",
+        "bookId": "book-6"
+      },
+      {
+        "content": "投資心態應該是耐心持有優質資產。",
+        "order": 11,
+        "id": "107db5fc-b0d4-4ad7-9deb-cced6c020c3e",
+        "bookId": "book-6"
+      },
+      {
+        "content": "要達到財務自由，必須避免盲目追高殺低。",
+        "order": 12,
+        "id": "cf357b50-f216-4131-8d53-4fc5309f7461",
+        "bookId": "book-6"
+      },
+      {
+        "content": "投資心態應該是讓被動收入覆蓋支出。",
+        "order": 13,
+        "id": "87b2ef9e-67e9-42e1-bea3-daea1fa86d31",
+        "bookId": "book-6"
+      },
+      {
+        "content": "理財應避免持續紀錄收支，而專注於長期規劃。",
+        "order": 14,
+        "id": "415b03f3-6cb4-48df-a407-6e66d0de006c",
+        "bookId": "book-6"
+      },
+      {
+        "content": "小資族能透過耐心持有優質資產達成資產成長。",
+        "order": 15,
+        "id": "d970855f-6613-4fe5-8c19-a5370d0a7b64",
+        "bookId": "book-6"
+      },
+      {
+        "content": "理財應避免持續紀錄收支，而專注於長期規劃。",
+        "order": 16,
+        "id": "d003554b-3724-4c11-9a42-02c7b43988ff",
+        "bookId": "book-6"
+      },
+      {
+        "content": "現金流的重要性在於分散風險。",
+        "order": 17,
+        "id": "39ad5d44-0439-482d-abc9-c1d6cfbe1722",
+        "bookId": "book-6"
+      },
+      {
+        "content": "理財應避免專注於基本面分析，而專注於長期規劃。",
+        "order": 18,
+        "id": "644f51fa-985f-4d15-a105-b891a5860bce",
+        "bookId": "book-6"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要讓被動收入覆蓋支出。",
+        "order": 19,
+        "id": "8949c556-938c-45b7-8f75-90b31056184d",
+        "bookId": "book-6"
+      },
+      {
+        "content": "投資心態應該是專注於基本面分析。",
+        "order": 20,
+        "id": "a6e3d44e-229f-4c52-b770-6764b42633e5",
+        "bookId": "book-6"
+      }
+    ],
+    "id": "book-6",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "巴菲特的投資智慧",
+    "description": "分享股神巴菲特的投資心法與選股邏輯。",
+    "imageUrl": "../uploads/book-cover-1758853498-58416.png",
+    "summaries": [
+      {
+        "content": "小資族能透過定期定額投資達成資產成長。",
+        "order": 1,
+        "id": "1ce25d54-f9d5-443e-a8e2-6fc5cab8176a",
+        "bookId": "book-7"
+      },
+      {
+        "content": "現金流的重要性在於耐心持有優質資產。",
+        "order": 2,
+        "id": "01d9633f-0926-4fc6-b27e-6ca4102b69f5",
+        "bookId": "book-7"
+      },
+      {
+        "content": "小資族能透過避免盲目追高殺低達成資產成長。",
+        "order": 3,
+        "id": "d5fb4599-40ea-40cc-95d8-db53a81ebed4",
+        "bookId": "book-7"
+      },
+      {
+        "content": "現金流的重要性在於不被短期波動影響。",
+        "order": 4,
+        "id": "f0f200cf-2c1c-46a0-acbc-5cb349d84975",
+        "bookId": "book-7"
+      },
+      {
+        "content": "理財應避免建立緊急預備金，而專注於長期規劃。",
+        "order": 5,
+        "id": "788e9018-bcf6-42e0-a4e3-d86dfd9a9271",
+        "bookId": "book-7"
+      },
+      {
+        "content": "投資的第一步是分散風險。",
+        "order": 6,
+        "id": "7ca8d1f6-79f5-4f2c-b10f-f7db21cbb9c3",
+        "bookId": "book-7"
+      },
+      {
+        "content": "風險管理的關鍵在於分散風險。",
+        "order": 7,
+        "id": "ea8288e8-7567-47ac-938b-06d8d2fb1900",
+        "bookId": "book-7"
+      },
+      {
+        "content": "風險管理的關鍵在於持續紀錄收支。",
+        "order": 8,
+        "id": "285bbc02-b70b-43c2-bdef-f6a1fa15b8fa",
+        "bookId": "book-7"
+      },
+      {
+        "content": "要達到財務自由，必須建立緊急預備金。",
+        "order": 9,
+        "id": "1f6e210b-a980-4a02-8109-8f7723dcb0da",
+        "bookId": "book-7"
+      },
+      {
+        "content": "投資的第一步是避免盲目追高殺低。",
+        "order": 10,
+        "id": "898f728b-c415-4f86-b1af-3f3ad1d85648",
+        "bookId": "book-7"
+      },
+      {
+        "content": "現金流的重要性在於持續學習財務知識。",
+        "order": 11,
+        "id": "c94a2c3c-b0cf-483b-9bca-00d8b3dd75d2",
+        "bookId": "book-7"
+      },
+      {
+        "content": "投資市場的規律在於持續紀錄收支。",
+        "order": 12,
+        "id": "e514f0da-db35-4d18-a578-3b242951847b",
+        "bookId": "book-7"
+      },
+      {
+        "content": "風險管理的關鍵在於持續學習財務知識。",
+        "order": 13,
+        "id": "0f644d81-325f-4dbb-a92f-fb32a3223fb8",
+        "bookId": "book-7"
+      },
+      {
+        "content": "投資的第一步是定期定額投資。",
+        "order": 14,
+        "id": "2f508174-ee8a-4b7f-a523-3467725f1020",
+        "bookId": "book-7"
+      },
+      {
+        "content": "要達到財務自由，必須避免盲目追高殺低。",
+        "order": 15,
+        "id": "499e3d21-9fc7-4d87-a605-e8870162421c",
+        "bookId": "book-7"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要控制情緒。",
+        "order": 16,
+        "id": "04412b83-2b2a-483d-a406-f64a6e496594",
+        "bookId": "book-7"
+      },
+      {
+        "content": "風險管理的關鍵在於持續紀錄收支。",
+        "order": 17,
+        "id": "916aaf7f-c640-47d0-b95c-8590ebd2338d",
+        "bookId": "book-7"
+      }
+    ],
+    "id": "book-7",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "指數化投資的力量",
+    "description": "強調用被動投資戰勝大部分主動型基金的長期策略。",
+    "imageUrl": "../uploads/book-cover-1758853498-58416.png",
+    "summaries": [
+      {
+        "content": "理財應避免控制情緒，而專注於長期規劃。",
+        "order": 1,
+        "id": "cadc6317-cf7d-407e-a3f6-9ef0a142f78d",
+        "bookId": "book-8"
+      },
+      {
+        "content": "現金流的重要性在於建立緊急預備金。",
+        "order": 2,
+        "id": "0b6c8e61-4f6a-40fa-9b73-901fdbaa81fe",
+        "bookId": "book-8"
+      },
+      {
+        "content": "投資市場的規律在於讓被動收入覆蓋支出。",
+        "order": 3,
+        "id": "15686092-5a6f-4287-906c-72365c7e8aa9",
+        "bookId": "book-8"
+      },
+      {
+        "content": "要達到財務自由，必須持續學習財務知識。",
+        "order": 4,
+        "id": "99ffd0e5-e67a-439e-accd-26747db4edb8",
+        "bookId": "book-8"
+      },
+      {
+        "content": "投資的第一步是讓被動收入覆蓋支出。",
+        "order": 5,
+        "id": "543a8810-eccf-4696-b29e-7ed67d45d83d",
+        "bookId": "book-8"
+      },
+      {
+        "content": "投資心態應該是耐心持有優質資產。",
+        "order": 6,
+        "id": "f567fb31-8027-4bba-b014-33fe4fef5263",
+        "bookId": "book-8"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要持續紀錄收支。",
+        "order": 7,
+        "id": "9d9baca2-b5aa-4967-959f-55db2d162766",
+        "bookId": "book-8"
+      },
+      {
+        "content": "現金流的重要性在於不被短期波動影響。",
+        "order": 8,
+        "id": "a02c0fd5-489e-4c0a-9e3a-c251f020ce65",
+        "bookId": "book-8"
+      },
+      {
+        "content": "投資心態應該是讓被動收入覆蓋支出。",
+        "order": 9,
+        "id": "cbd95e21-4c7f-407a-b483-817e1e85496d",
+        "bookId": "book-8"
+      },
+      {
+        "content": "現金流的重要性在於耐心持有優質資產。",
+        "order": 10,
+        "id": "702cfe5b-af21-4dda-8427-6003566dcfdb",
+        "bookId": "book-8"
+      },
+      {
+        "content": "投資市場的規律在於耐心持有優質資產。",
+        "order": 11,
+        "id": "84274dcd-73ce-4aca-9f47-9e0ae2a86563",
+        "bookId": "book-8"
+      },
+      {
+        "content": "現金流的重要性在於讓被動收入覆蓋支出。",
+        "order": 12,
+        "id": "f8dcfacf-4f12-4013-8dad-afdcb6c5701e",
+        "bookId": "book-8"
+      },
+      {
+        "content": "投資市場的規律在於專注於基本面分析。",
+        "order": 13,
+        "id": "00b1512f-f647-4df9-8e8c-0d8943690ecd",
+        "bookId": "book-8"
+      },
+      {
+        "content": "理財應避免避免盲目追高殺低，而專注於長期規劃。",
+        "order": 14,
+        "id": "fde076c1-cc13-4775-b42b-331ed0363573",
+        "bookId": "book-8"
+      },
+      {
+        "content": "成功的投資人通常會控制情緒。",
+        "order": 15,
+        "id": "43878afa-6196-400e-804e-bbc6d779bbe2",
+        "bookId": "book-8"
+      },
+      {
+        "content": "成功的投資人通常會建立緊急預備金。",
+        "order": 16,
+        "id": "6d54ba64-b8bd-4503-a868-55fed5ac3437",
+        "bookId": "book-8"
+      }
+    ],
+    "id": "book-8",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "投資心理學",
+    "description": "探討投資人常見的心理陷阱與行為偏差，幫助養成理性決策能力。",
+    "imageUrl": "../uploads/book-cover-1758859190-16680.png",
+    "summaries": [
+      {
+        "content": "小資族能透過建立緊急預備金達成資產成長。",
+        "order": 1,
+        "id": "8e03c13e-fc37-4cc5-ae33-1ae3397d2622",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資的第一步是避免盲目追高殺低。",
+        "order": 2,
+        "id": "c784fa5d-9be9-4065-a8fe-c00897327ddf",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資市場的規律在於不被短期波動影響。",
+        "order": 3,
+        "id": "785454bd-668e-47c6-ac5f-e5d871ecb3ce",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資市場的規律在於建立緊急預備金。",
+        "order": 4,
+        "id": "59c598d6-f1dc-401b-9194-c463d299e473",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資心態應該是耐心持有優質資產。",
+        "order": 5,
+        "id": "9e086eea-e2ca-447e-9158-8bc99b8ef308",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資心態應該是耐心持有優質資產。",
+        "order": 6,
+        "id": "7b93bae4-94a0-48ae-acd3-db6898d21a55",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資市場的規律在於定期定額投資。",
+        "order": 7,
+        "id": "f754777e-266f-4b00-a37b-ea6b106f1afe",
+        "bookId": "book-9"
+      },
+      {
+        "content": "小資族能透過定期定額投資達成資產成長。",
+        "order": 8,
+        "id": "bcf62fc5-f046-4ad5-8ea0-aa08099d9029",
+        "bookId": "book-9"
+      },
+      {
+        "content": "成功的投資人通常會控制情緒。",
+        "order": 9,
+        "id": "ffdd196f-367c-4f45-8c0a-cfa589d0b59a",
+        "bookId": "book-9"
+      },
+      {
+        "content": "小資族能透過不被短期波動影響達成資產成長。",
+        "order": 10,
+        "id": "af3a6e9b-7ede-48fb-a62e-82c52bb5040d",
+        "bookId": "book-9"
+      },
+      {
+        "content": "現金流的重要性在於不被短期波動影響。",
+        "order": 11,
+        "id": "d42912e7-aa03-48a1-8910-ee061877cae6",
+        "bookId": "book-9"
+      },
+      {
+        "content": "小資族能透過持續紀錄收支達成資產成長。",
+        "order": 12,
+        "id": "f49ada03-0c51-4dcd-a7d8-629f548f1259",
+        "bookId": "book-9"
+      },
+      {
+        "content": "小資族能透過避免盲目追高殺低達成資產成長。",
+        "order": 13,
+        "id": "cb2cb9b7-56f9-4282-b663-cecbb0068fed",
+        "bookId": "book-9"
+      },
+      {
+        "content": "現金流的重要性在於分散風險。",
+        "order": 14,
+        "id": "ddb51c0d-406e-45c0-84bc-b67f74da2f27",
+        "bookId": "book-9"
+      },
+      {
+        "content": "風險管理的關鍵在於定期定額投資。",
+        "order": 15,
+        "id": "a1094579-8fc6-4582-8afa-f2318b3cb0b8",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資的第一步是分散風險。",
+        "order": 16,
+        "id": "d763210f-6037-4c0a-a7c3-f5c2d04000b2",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資的第一步是耐心持有優質資產。",
+        "order": 17,
+        "id": "00685f4f-0490-475c-91f1-fd148a2ef6fc",
+        "bookId": "book-9"
+      },
+      {
+        "content": "風險管理的關鍵在於定期定額投資。",
+        "order": 18,
+        "id": "84d52c3f-a8dc-4640-be7d-8f47a6f861c7",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資的第一步是分散風險。",
+        "order": 19,
+        "id": "2c840bb8-101d-47f4-b18c-e8bd2be66977",
+        "bookId": "book-9"
+      },
+      {
+        "content": "要達到財務自由，必須建立緊急預備金。",
+        "order": 20,
+        "id": "87eeaca3-fe27-4cbd-ad5f-46caccd6292f",
+        "bookId": "book-9"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要讓被動收入覆蓋支出。",
+        "order": 21,
+        "id": "09f080c3-90be-4d80-a621-a4c68be0f451",
+        "bookId": "book-9"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要持續學習財務知識。",
+        "order": 22,
+        "id": "4442edd6-4f25-4886-a1b3-00245ad483c0",
+        "bookId": "book-9"
+      },
+      {
+        "content": "投資的第一步是不被短期波動影響。",
+        "order": 23,
+        "id": "0d5540f4-0b9d-49f7-8f06-284662f8215a",
+        "bookId": "book-9"
+      },
+      {
+        "content": "現金流的重要性在於耐心持有優質資產。",
+        "order": 24,
+        "id": "458f32ce-1c3d-4a06-91fd-71d3bb201766",
+        "bookId": "book-9"
+      },
+      {
+        "content": "成功的投資人通常會耐心持有優質資產。",
+        "order": 25,
+        "id": "cec5ae92-7cb5-4a07-87fc-3ad35e47f943",
+        "bookId": "book-9"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要專注於基本面分析。",
+        "order": 26,
+        "id": "b53fc077-5142-4f11-b350-2ee02f6ea7e1",
+        "bookId": "book-9"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要控制情緒。",
+        "order": 27,
+        "id": "28db46f4-98f8-4b32-9318-75bfec0b1925",
+        "bookId": "book-9"
+      },
+      {
+        "content": "風險管理的關鍵在於耐心持有優質資產。",
+        "order": 28,
+        "id": "fc911867-21ce-4013-af0a-acd1b912a481",
+        "bookId": "book-9"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要耐心持有優質資產。",
+        "order": 29,
+        "id": "d407b240-fc8f-4a39-a666-544ff41bcd0f",
+        "bookId": "book-9"
+      },
+      {
+        "content": "現金流的重要性在於控制情緒。",
+        "order": 30,
+        "id": "811ff004-b107-4744-980f-bdadcc5e8731",
+        "bookId": "book-9"
+      },
+      {
+        "content": "風險管理的關鍵在於持續紀錄收支。",
+        "order": 31,
+        "id": "cd5851e8-c951-4faa-8638-b0f13312db82",
+        "bookId": "book-9"
+      },
+      {
+        "content": "要達到財務自由，必須避免盲目追高殺低。",
+        "order": 32,
+        "id": "32a02e02-9d75-4338-9843-423c5f263493",
+        "bookId": "book-9"
+      }
+    ],
+    "id": "book-9",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
+  },
+  {
+    "title": "現金流致富學",
+    "description": "如何管理現金流，打造長期穩健的財務系統。",
+    "imageUrl": "../uploads/book-cover-1758857992-87965.png",
+    "summaries": [
+      {
+        "content": "投資市場的規律在於控制情緒。",
+        "order": 1,
+        "id": "94f4fe43-a0e4-40ca-9a60-28a70880d2f6",
+        "bookId": "book-10"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要控制情緒。",
+        "order": 2,
+        "id": "7f26541a-50c1-42b9-878d-ae8a135a9186",
+        "bookId": "book-10"
+      },
+      {
+        "content": "小資族能透過避免盲目追高殺低達成資產成長。",
+        "order": 3,
+        "id": "61e04766-201f-4924-b3b1-ea5b3f5d6dda",
+        "bookId": "book-10"
+      },
+      {
+        "content": "投資市場的規律在於讓被動收入覆蓋支出。",
+        "order": 4,
+        "id": "1f35eec3-611b-4420-9bfd-24e5e4cd9a17",
+        "bookId": "book-10"
+      },
+      {
+        "content": "風險管理的關鍵在於分散風險。",
+        "order": 5,
+        "id": "14d42151-c6bb-42e1-ae18-6f4c38a02d85",
+        "bookId": "book-10"
+      },
+      {
+        "content": "投資市場的規律在於建立緊急預備金。",
+        "order": 6,
+        "id": "9a533ec2-8bf7-49f6-8a6f-4ace87c55d27",
+        "bookId": "book-10"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要避免盲目追高殺低。",
+        "order": 7,
+        "id": "21b6f2bb-ada4-4f21-aba3-b98db5b70bb5",
+        "bookId": "book-10"
+      },
+      {
+        "content": "投資市場的規律在於耐心持有優質資產。",
+        "order": 8,
+        "id": "88022f88-b700-46f6-87f9-9d38e3d6ea77",
+        "bookId": "book-10"
+      },
+      {
+        "content": "投資的第一步是持續學習財務知識。",
+        "order": 9,
+        "id": "569ba744-685b-4f71-96bf-5221e4664cde",
+        "bookId": "book-10"
+      },
+      {
+        "content": "風險管理的關鍵在於專注於基本面分析。",
+        "order": 10,
+        "id": "b870cc30-1973-42ee-876d-48abc93181d7",
+        "bookId": "book-10"
+      },
+      {
+        "content": "投資心態應該是持續學習財務知識。",
+        "order": 11,
+        "id": "2ba4a67f-daa7-43ee-b6b8-a4e417e80eab",
+        "bookId": "book-10"
+      },
+      {
+        "content": "巴菲特的智慧告訴我們要持續學習財務知識。",
+        "order": 12,
+        "id": "990dbb0c-52d5-473e-b161-22cde1466c09",
+        "bookId": "book-10"
+      },
+      {
+        "content": "風險管理的關鍵在於分散風險。",
+        "order": 13,
+        "id": "a07adf5a-8a22-4668-833c-28ee68798c06",
+        "bookId": "book-10"
+      },
+      {
+        "content": "現金流的重要性在於專注於基本面分析。",
+        "order": 14,
+        "id": "71946fde-728c-4635-a218-6e06cf782c8a",
+        "bookId": "book-10"
+      },
+      {
+        "content": "投資的第一步是持續紀錄收支。",
+        "order": 15,
+        "id": "8ee26767-0182-4964-9119-32b4ebf672e6",
+        "bookId": "book-10"
+      }
+    ],
+    "id": "book-10",
+    "createdAt": "2025-09-26T06:25:32.258884",
+    "updatedAt": "2025-09-26T06:25:32.258884",
+    "isPublished": true
   }
 ]

@@ -84,10 +84,29 @@ class LocalBookRepository implements BookRepository {
     final bookIndex = books.indexWhere((book) => book.id == bookId);
 
     if (bookIndex != -1) {
+      final now = DateTime.now();
+
+      // 解鎖書籍
       books[bookIndex] = books[bookIndex].copyWith(
         isUnlocked: true,
-        unlockedAt: DateTime.now(),
+        unlockedAt: now,
       );
+
+      // 自動解鎖該書籍的前10則摘要
+      final summariesToUnlock = books[bookIndex].summaries
+          .where((summary) => !summary.isUnlocked)
+          .take(10)
+          .toList();
+
+      for (int i = 0; i < books[bookIndex].summaries.length; i++) {
+        if (summariesToUnlock.any((s) => s.id == books[bookIndex].summaries[i].id)) {
+          books[bookIndex].summaries[i] = books[bookIndex].summaries[i].copyWith(
+            isUnlocked: true,
+            unlockedAt: now,
+          );
+        }
+      }
+
       await saveBooks(books);
       await _userRepository.unlockBook(userId, bookId);
     }
@@ -158,8 +177,39 @@ class LocalBookRepository implements BookRepository {
 
   @override
   Future<List<Summary>> unlockDailySummaries(String userId, int count) async {
+    // 檢查今天是否已經解鎖過
+    final user = await _userRepository.getCurrentUser();
+    if (user == null || user.id != userId) return [];
+
+    final today = DateTime.now();
+    final todayKey = '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
+
+    // 如果今天已經解鎖過，返回空列表
+    if (user.dailyUnlockHistory.containsKey(todayKey)) {
+      print('Daily summaries already unlocked for today: $todayKey');
+      return [];
+    }
+
     final books = await getAllBooks();
-    return await _bookService.unlockDailySummaries(books, count);
+    final unlockedSummaries = await _bookService.unlockDailySummaries(books, count);
+
+    // 如果有解鎖新摘要，記錄到每日解鎖歷史和保存書籍資料
+    if (unlockedSummaries.isNotEmpty) {
+      await saveBooks(books);
+
+      // 更新使用者的每日解鎖記錄
+      final updatedHistory = Map<String, DateTime>.from(user.dailyUnlockHistory);
+      updatedHistory[todayKey] = today;
+
+      final updatedUser = user.copyWith(
+        dailyUnlockHistory: updatedHistory,
+      );
+
+      await _userRepository.updateUser(updatedUser);
+      print('Daily summaries unlocked and recorded for: $todayKey');
+    }
+
+    return unlockedSummaries;
   }
 
   @override

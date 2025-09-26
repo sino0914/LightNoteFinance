@@ -26,6 +26,7 @@ class UserProvider extends ChangeNotifier {
       if (_user == null) {
         _user = User(
           id: DateTime.now().millisecondsSinceEpoch.toString(),
+          points: AppConstants.defaultUserPoints,
           settings: UserSettings(),
         );
         await _userRepository.saveUser(_user!);

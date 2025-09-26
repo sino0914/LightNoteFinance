@@ -4,12 +4,15 @@ class AppConstants {
   static const int defaultDailySummaryCount = 10;
   static const int maxDailySummaryCount = 15;
   static const int watchAdPoints = 10;
+  static const int defaultUserPoints = 100;
+  static const int bookUnlockCost = 20;
 
   static const Map<String, int> purchasePrices = {
     'bookmarkFeature': 100,
     'highlightFeature': 150,
     'chooseBooks': 200,
     'extraDailySummary': 50,
+    'bookUnlock': 20,
   };
 
   static const List<String> weekdays = [

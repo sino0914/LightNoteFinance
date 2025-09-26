@@ -54,18 +54,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
         child: Consumer2<UserProvider, BookProvider>(
           builder: (context, userProvider, bookProvider, child) {
             final user = userProvider.user;
-            return Column(
+            return Stack(
               children: [
-                TopBar(points: user?.points ?? 0),
-                Expanded(
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(color: Colors.white),
-                        )
-                      : _viewHistory.isEmpty
-                      ? _buildEmptyState()
-                      : _buildHistoryList(),
+                // 主要內容
+                Column(
+                  children: [
+                    TopBar(points: user?.points ?? 0),
+                    Expanded(
+                      child: _isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(color: Colors.white),
+                            )
+                          : _viewHistory.isEmpty
+                          ? _buildEmptyState()
+                          : _buildHistoryList(),
+                    ),
+                  ],
                 ),
+
+                // 底部選單
                 Positioned(
                     bottom: 0,
                     left: 0,

@@ -45,16 +45,23 @@ class _BookListScreenState extends State<BookListScreen> {
             final user = userProvider.user;
             final books = bookProvider.books;
 
-            return Column(
+            return Stack(
               children: [
-                // 頂部欄
-                TopBar(points: user?.points ?? 0),
+                // 主要內容
+                Column(
+                  children: [
+                    // 頂部欄
+                    TopBar(points: user?.points ?? 0),
 
-                Expanded(
-                  child: books.isEmpty
-                      ? _buildEmptyState()
-                      : _buildBookGrid(books),
+                    Expanded(
+                      child: books.isEmpty
+                          ? _buildEmptyState()
+                          : _buildBookGrid(books),
+                    ),
+                  ],
                 ),
+
+                // 底部選單
                 Positioned(
                   bottom: 0,
                   left: 0,
@@ -267,36 +274,132 @@ class _BookListScreenState extends State<BookListScreen> {
   }
 
   void _showUnlockDialog(Book book) {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final user = userProvider.user;
+    final hasEnoughPoints = user != null && user.points >= AppConstants.bookUnlockCost;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: const Color(0xFF16213E),
-        title: const Text('書籍未解鎖', style: TextStyle(color: Colors.white)),
-        content: Text(
-          '這本書尚未解鎖，您可以使用積分解鎖或等待每日自動解鎖。',
-          style: TextStyle(color: Colors.white.withValues(alpha: 0.8)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Row(
+          children: [
+            const Icon(Icons.lock, color: Colors.amber, size: 24),
+            const SizedBox(width: 8),
+            const Text('解鎖書籍', style: TextStyle(color: Colors.white)),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              book.title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              book.description,
+              style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.stars, color: Colors.amber, size: 20),
+                  const SizedBox(width: 8),
+                  Text(
+                    '解鎖需要 ${AppConstants.bookUnlockCost} 積分',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '您目前擁有 ${user?.points ?? 0} 積分',
+              style: TextStyle(
+                color: hasEnoughPoints ? Colors.green : Colors.red,
+                fontSize: 12,
+              ),
+            ),
+          ],
         ),
         actions: [
           TextButton(
-            onPressed: () {
-              if (context.canPop()) {
-                context.pop();
-              } else {
-                context.go('/');
-              }
-            },
+            onPressed: () => context.pop(),
             child: const Text('取消', style: TextStyle(color: Colors.white)),
           ),
-          TextButton(
-            onPressed: () {
-              context.pop();
-              context.go(Routes.points);
-            },
-            child: const Text('前往商店', style: TextStyle(color: Colors.amber)),
-          ),
+          if (hasEnoughPoints)
+            ElevatedButton(
+              onPressed: () => _purchaseBook(book),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+                foregroundColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text('花費 ${AppConstants.bookUnlockCost} 積分解鎖'),
+            )
+          else
+            TextButton(
+              onPressed: () {
+                context.pop();
+                context.go(Routes.points);
+              },
+              child: const Text('前往商店', style: TextStyle(color: Colors.amber)),
+            ),
         ],
       ),
     );
+  }
+
+  Future<void> _purchaseBook(Book book) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final bookProvider = Provider.of<BookProvider>(context, listen: false);
+
+    try {
+      // 扣除積分
+      await userProvider.spendPoints(AppConstants.bookUnlockCost);
+
+      // 解鎖書籍
+      await bookProvider.unlockBook(book.id);
+
+      if (context.mounted) {
+        context.pop(); // 關閉對話框
+
+        // 顯示成功訊息
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('成功解鎖《${book.title}》！'),
+            backgroundColor: Colors.green,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        // 顯示錯誤訊息
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('解鎖失敗: $e'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    }
   }
 
   void _handleMenuTap(BuildContext context, int index) {

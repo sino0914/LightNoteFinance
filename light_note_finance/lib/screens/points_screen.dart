@@ -57,12 +57,19 @@ class _PointsScreenState extends State<PointsScreen> {
             final user = userProvider.user;
             final points = user?.points ?? 0;
 
-            return Column(
+            return Stack(
               children: [
-                const SizedBox(height: 20),
-                _buildPointsCard(points),
-                const SizedBox(height: 20),
-                _buildStoreSection(),
+                // 主要內容
+                Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    _buildPointsCard(points),
+                    const SizedBox(height: 20),
+                    _buildStoreSection(),
+                  ],
+                ),
+
+                // 底部選單
                 Positioned(
                   bottom: 0,
                   left: 0,

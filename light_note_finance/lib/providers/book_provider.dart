@@ -151,6 +151,11 @@ class BookProvider extends ChangeNotifier {
     }
   }
 
+  void setTodaySummaries(List<Summary> summaries) {
+    _todaySummaries = summaries;
+    notifyListeners();
+  }
+
   Future<void> unlockDailySummaries(int count) async {
     if (_currentUserId == null) return;
 

@@ -39,7 +39,7 @@ class User {
 
   User({
     required this.id,
-    this.points = 0,
+    this.points = 100,
     this.isFirstLogin = true,
     this.lastLoginAt,
     this.unlockedBookIds = const [],

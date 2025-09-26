@@ -191,14 +191,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final bookProvider = Provider.of<BookProvider>(context, listen: false);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-    final selectedBook = bookProvider.books[_selectedBookIndex];
+    final firstThreeBooks = bookProvider.books.take(3).toList();
+    final selectedBook = firstThreeBooks[_selectedBookIndex];
 
     try {
+      print('Attempting to unlock book: ${selectedBook.id} - ${selectedBook.title}');
+
       // 解鎖選擇的書籍
       await bookProvider.unlockBook(selectedBook.id);
+      print('Book unlock completed');
 
       // 完成首次登入
       await userProvider.completeFirstLogin(selectedBook.id);
+      print('First login completed');
 
       // 等待用戶狀態更新完成
       await Future.delayed(const Duration(milliseconds: 100));
@@ -252,93 +257,70 @@ class BookCard extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                const Color(0xFF16213E),
-                const Color(0xFF0F3460),
-              ],
-            ),
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                top: -50,
-                right: -50,
-                child: Container(
-                  width: 150,
-                  height: 150,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              book.imageUrl,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white.withOpacity(0.1),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFF16213E),
+                        const Color(0xFF0F3460),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 160,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white.withOpacity(0.9),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.book,
-                              size: 40,
-                              color: const Color(0xFF16213E),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              book.title,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF16213E),
-                              ),
-                              textAlign: TextAlign.center,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
-                      ),
+                  child: Center(
+                    child: Icon(
+                      Icons.book,
+                      size: 80,
+                      color: Colors.white.withOpacity(0.7),
                     ),
-                    const SizedBox(height: 20),
-                    Text(
-                      book.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  ),
+                );
+              },
+            ),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withOpacity(0.7),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+            Positioned(
+              bottom: 20,
+              left: 20,
+              right: 20,
+              child: Text(
+                book.title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black54,
+                      offset: Offset(1, 1),
+                      blurRadius: 3,
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
         ),
       ),
     );
