@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../models/book.dart';
 import '../providers/user_provider.dart';
 import '../providers/book_provider.dart';
+import '../constants/app_constants.dart';
 
 class SummaryScreen extends StatefulWidget {
   final String bookId;
@@ -469,9 +470,12 @@ class _SummaryScreenState extends State<SummaryScreen> {
     }
 
     final bookProvider = Provider.of<BookProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     if (!summary.isRead) {
       await bookProvider.markSummaryAsRead(summary.id);
+      // 更新週度活動
+      await userProvider.updateWeeklyActivity();
       // 重新載入書籍資料以更新狀態
       _loadBookData();
     }
@@ -481,45 +485,143 @@ class _SummaryScreenState extends State<SummaryScreen> {
   }
 
   void _showUnlockDialog(Summary summary) {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final user = userProvider.user;
+    final unlockCost = 10; // 解鎖10則摘要的價格
+    final hasEnoughPoints = user != null && user.points >= unlockCost;
+
+    // 計算可以解鎖的摘要數量
+    final lockedSummaries = _book!.summaries.where((s) => !s.isUnlocked).toList();
+    final summariesCount = lockedSummaries.length > 10 ? 10 : lockedSummaries.length;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: const Color(0xFF16213E),
-        title: const Text(
-          '摘要未解鎖',
-          style: TextStyle(color: Colors.white),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Row(
+          children: [
+            const Icon(Icons.lock_open, color: Colors.amber, size: 24),
+            const SizedBox(width: 8),
+            const Text('解鎖摘要', style: TextStyle(color: Colors.white)),
+          ],
         ),
-        content: Text(
-          '這個摘要尚未解鎖，您可以使用積分解鎖或等待每日自動解鎖。',
-          style: TextStyle(color: Colors.white.withValues(alpha: 0.8)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '是否解鎖後${summariesCount}則摘要？',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '將會解鎖《${_book!.title}》的接下來${summariesCount}則摘要內容',
+              style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.stars, color: Colors.amber, size: 20),
+                  const SizedBox(width: 8),
+                  Text(
+                    '解鎖需要 $unlockCost 積分',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '您目前擁有 ${user?.points ?? 0} 積分',
+              style: TextStyle(
+                color: hasEnoughPoints ? Colors.green : Colors.red,
+                fontSize: 12,
+              ),
+            ),
+          ],
         ),
         actions: [
           TextButton(
-            onPressed: () {
-              if (context.canPop()) {
+            onPressed: () => context.pop(),
+            child: const Text('取消', style: TextStyle(color: Colors.white)),
+          ),
+          if (hasEnoughPoints)
+            ElevatedButton(
+              onPressed: () => _purchaseSummaries(),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+                foregroundColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text('花費 $unlockCost 積分解鎖'),
+            )
+          else
+            TextButton(
+              onPressed: () {
                 context.pop();
-              } else {
-                context.go('/');
-              }
-            },
-            child: const Text(
-              '取消',
-              style: TextStyle(color: Colors.white),
+                context.go(Routes.points);
+              },
+              child: const Text('前往商店', style: TextStyle(color: Colors.amber)),
             ),
-          ),
-          TextButton(
-            onPressed: () {
-              context.pop();
-              // 導航到商店頁面
-            },
-            child: const Text(
-              '前往商店',
-              style: TextStyle(color: Colors.amber),
-            ),
-          ),
         ],
       ),
     );
+  }
+
+  Future<void> _purchaseSummaries() async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final bookProvider = Provider.of<BookProvider>(context, listen: false);
+    final unlockCost = 10;
+
+    try {
+      // 扣除積分
+      await userProvider.spendPoints(unlockCost);
+
+      // 解鎖後10則摘要
+      final unlockedSummaries = await bookProvider.unlockNext10Summaries(widget.bookId);
+
+      if (context.mounted) {
+        context.pop(); // 關閉對話框
+
+        // 重新載入書籍資料以更新UI
+        _loadBookData();
+
+        // 顯示成功訊息
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('成功解鎖 ${unlockedSummaries.length} 則摘要！'),
+            backgroundColor: Colors.green,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        context.pop(); // 關閉對話框
+
+        // 顯示錯誤訊息
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('解鎖失敗: $e'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    }
   }
 
   void _showReadingDialog(Summary summary) {

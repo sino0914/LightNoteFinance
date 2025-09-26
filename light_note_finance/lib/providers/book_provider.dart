@@ -218,6 +218,39 @@ class BookProvider extends ChangeNotifier {
     _clearError();
   }
 
+  Future<List<Summary>> unlockNext10Summaries(String bookId) async {
+    if (_currentUserId == null) return [];
+
+    try {
+      final book = getBookById(bookId);
+      if (book == null) {
+        throw Exception('書籍不存在');
+      }
+
+      // 找到該書籍中已解鎖的摘要
+      final unlockedSummaries = book.summaries.where((s) => s.isUnlocked).toList();
+      final lockedSummaries = book.summaries.where((s) => !s.isUnlocked).toList();
+
+      if (lockedSummaries.isEmpty) {
+        return []; // 沒有可解鎖的摘要
+      }
+
+      // 解鎖接下來的10則摘要（或剩餘數量，如果不足10則）
+      final summariesToUnlock = lockedSummaries.take(10).toList();
+      final unlockedList = <Summary>[];
+
+      for (final summary in summariesToUnlock) {
+        await unlockSummary(summary.id);
+        unlockedList.add(summary);
+      }
+
+      return unlockedList;
+    } catch (e) {
+      _setError('Failed to unlock next 10 summaries: $e');
+      return [];
+    }
+  }
+
   Future<List<Summary>> getUserViewHistory(String userId) async {
     try {
       return await _bookRepository.getUserViewHistory(userId);

@@ -4,7 +4,7 @@ class AppConstants {
   static const int defaultDailySummaryCount = 10;
   static const int maxDailySummaryCount = 15;
   static const int watchAdPoints = 10;
-  static const int defaultUserPoints = 100;
+  static const int defaultUserPoints = 1000;
   static const int bookUnlockCost = 20;
 
   static const Map<String, int> purchasePrices = {

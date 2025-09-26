@@ -60,6 +60,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 Column(
                   children: [
                     TopBar(points: user?.points ?? 0),
+                    // 週度活動卡片
+                    _buildWeeklyActivityCard(user),
                     Expanded(
                       child: _isLoading
                           ? const Center(
@@ -322,6 +324,114 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   void _viewSummary(Summary summary) {
     context.go('${Routes.summary}/${summary.bookId}');
+  }
+
+  Widget _buildWeeklyActivityCard(user) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            const Color(0xFF16213E),
+            const Color(0xFF0F3460),
+          ],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.3),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '本週活動',
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: _buildWeeklyActivityItems(user),
+          ),
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _buildWeeklyActivityItems(user) {
+    final now = DateTime.now();
+    final List<Widget> items = [];
+
+    // 找到本週的開始日期（週日）
+    final weekStart = now.subtract(Duration(days: now.weekday % 7));
+
+    for (int i = 0; i < 7; i++) {
+      final date = weekStart.add(Duration(days: i));
+      final weekdayKey = AppConstants.weekdays[i];
+      final hasActivity = user?.weeklyActivity[weekdayKey] ?? false;
+      final isToday = date.day == now.day && date.month == now.month && date.year == now.year;
+
+      items.add(
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // 星期標籤
+            Text(
+              AppConstants.weekdaysShort[i],
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.white.withValues(alpha: 0.7),
+                fontWeight: isToday ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+            const SizedBox(height: 8),
+            // 活動指示器
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: isToday
+                    ? Colors.amber.withValues(alpha: 0.2)
+                    : Colors.white.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(16),
+                border: isToday
+                    ? Border.all(color: Colors.amber, width: 2)
+                    : null,
+              ),
+              child: hasActivity
+                  ? const Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                      size: 20,
+                    )
+                  : Center(
+                      child: Text(
+                        date.day.toString(),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white.withValues(alpha: 0.6),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return items;
   }
 
   void _handleMenuTap(BuildContext context, int index) {

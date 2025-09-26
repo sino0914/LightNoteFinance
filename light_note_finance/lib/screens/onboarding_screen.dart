@@ -24,6 +24,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       initialPage: _selectedBookIndex,
       viewportFraction: 0.6,
     );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadBooks();
+    });
+  }
+
+  Future<void> _loadBooks() async {
+    final bookProvider = Provider.of<BookProvider>(context, listen: false);
+    await bookProvider.initializeBooks();
   }
 
   @override
@@ -201,29 +209,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       await bookProvider.unlockBook(selectedBook.id);
       print('Book unlock completed');
 
-      // 完成首次登入
+      // 完成首次登入（會自動記錄當天到每日解鎖歷史，防止當天觸發每日解鎖）
       await userProvider.completeFirstLogin(selectedBook.id);
       print('First login completed');
 
       // 等待用戶狀態更新完成
       await Future.delayed(const Duration(milliseconds: 100));
 
-      // 解鎖每日摘要（首次登入時給予初始摘要）
+      // 更新每週活動記錄
       if (userProvider.user != null) {
-        await bookProvider.unlockDailySummaries(
-          userProvider.user!.settings.dailySummaryCount
-        );
         await userProvider.updateWeeklyActivity();
       }
 
       if (context.mounted) {
+        // 顯示成功訊息
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('歡迎！已為您解鎖《${selectedBook.title}》'),
+            backgroundColor: Colors.green,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+
         context.go(Routes.home);
       }
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error: $e'),
+            content: Text('解鎖書籍時發生錯誤: $e'),
             backgroundColor: Colors.red,
           ),
         );

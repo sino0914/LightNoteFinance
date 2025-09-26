@@ -24,6 +24,32 @@ class _BookListScreenState extends State<BookListScreen> {
     });
   }
 
+  String _convertImageUrlToAssetPath(String? imageUrl) {
+    if (imageUrl == null || imageUrl.isEmpty) {
+      return 'assets/images/default-book.png';
+    }
+
+    // 如果是 ../uploads/ 格式，轉換為 assets/uploads/
+    if (imageUrl.startsWith('../uploads/')) {
+      final filename = imageUrl.replaceFirst('../uploads/', '');
+      return 'assets/uploads/$filename';
+    }
+
+    // 如果是 /uploads/ 格式，轉換為 assets/uploads/
+    if (imageUrl.startsWith('/uploads/')) {
+      final filename = imageUrl.replaceFirst('/uploads/', '');
+      return 'assets/uploads/$filename';
+    }
+
+    // 如果已經是正確的 assets/ 格式，直接返回
+    if (imageUrl.startsWith('assets/')) {
+      return imageUrl;
+    }
+
+    // 默認情況，假設是檔名，加上 assets/uploads/ 前綴
+    return 'assets/uploads/$imageUrl';
+  }
+
   Future<void> _loadBooks() async {
     final bookProvider = Provider.of<BookProvider>(context, listen: false);
     await bookProvider.initializeBooks();
@@ -141,19 +167,34 @@ class _BookListScreenState extends State<BookListScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // 書籍圖標
+                  // 書籍圖片
                   Container(
-                    width: 50,
-                    height: 60,
+                    width: 80,
+                    height: 100,
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Icon(
-                      Icons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+                    clipBehavior: Clip.hardEdge,
+                    child: book.imageUrl.isNotEmpty
+                        ? Image.asset(
+                            _convertImageUrlToAssetPath(book.imageUrl),
+                            width: 80,
+                            height: 100,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return const Icon(
+                                Icons.book,
+                                color: Colors.white,
+                                size: 30,
+                              );
+                            },
+                          )
+                        : const Icon(
+                            Icons.book,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                   ),
 
                   const SizedBox(height: 12),

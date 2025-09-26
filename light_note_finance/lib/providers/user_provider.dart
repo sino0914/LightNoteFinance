@@ -45,11 +45,19 @@ class UserProvider extends ChangeNotifier {
     if (_user == null) return;
 
     try {
+      final today = DateTime.now();
+      final todayKey = '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
+
+      // 記錄當天到每日解鎖歷史，防止當天觸發每日解鎖
+      final updatedHistory = Map<String, DateTime>.from(_user!.dailyUnlockHistory);
+      updatedHistory[todayKey] = today;
+
       _user = _user!.copyWith(
         isFirstLogin: false,
         currentBookId: selectedBookId,
         unlockedBookIds: [selectedBookId],
-        lastLoginAt: DateTime.now(),
+        lastLoginAt: today,
+        dailyUnlockHistory: updatedHistory,
       );
 
       await _userRepository.updateUser(_user!);
@@ -154,14 +162,45 @@ class UserProvider extends ChangeNotifier {
       final today = DateTime.now();
       final weekday = AppConstants.weekdays[today.weekday % 7];
 
-      final activity = Map<String, bool>.from(_user!.weeklyActivity);
+      // 檢查是否需要重置週度活動
+      final needsReset = _needsWeeklyReset(today);
+
+      Map<String, bool> activity;
+      if (needsReset) {
+        // 如果需要重置，清空活動記錄
+        activity = <String, bool>{};
+      } else {
+        // 否則使用現有記錄
+        activity = Map<String, bool>.from(_user!.weeklyActivity);
+      }
+
+      // 設置今天的活動
       activity[weekday] = true;
 
-      _user = _user!.copyWith(weeklyActivity: activity);
+      _user = _user!.copyWith(
+        weeklyActivity: activity,
+        lastWeekReset: needsReset ? today : _user!.lastWeekReset,
+      );
       notifyListeners();
     } catch (e) {
       _setError('Failed to update weekly activity: $e');
     }
+  }
+
+  bool _needsWeeklyReset(DateTime today) {
+    if (_user!.lastWeekReset == null) {
+      // 如果從未重置過，需要重置
+      return true;
+    }
+
+    // 計算本週的開始日期（週日）
+    final todayWeekStart = today.subtract(Duration(days: today.weekday % 7));
+    final lastResetWeekStart = _user!.lastWeekReset!.subtract(
+      Duration(days: _user!.lastWeekReset!.weekday % 7),
+    );
+
+    // 如果上次重置不是在本週，需要重置
+    return todayWeekStart.isAfter(lastResetWeekStart);
   }
 
   Future<void> updateUserSettings(UserSettings settings) async {

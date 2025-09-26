@@ -37,9 +37,12 @@ class User {
   @HiveField(10)
   final UserSettings settings;
 
+  @HiveField(11)
+  final DateTime? lastWeekReset;
+
   User({
     required this.id,
-    this.points = 100,
+    this.points = 1000,
     this.isFirstLogin = true,
     this.lastLoginAt,
     this.unlockedBookIds = const [],
@@ -49,6 +52,7 @@ class User {
     this.viewHistory = const [],
     this.dailyUnlockHistory = const {},
     required this.settings,
+    this.lastWeekReset,
   });
 
   User copyWith({
@@ -63,6 +67,7 @@ class User {
     List<String>? viewHistory,
     Map<String, DateTime>? dailyUnlockHistory,
     UserSettings? settings,
+    DateTime? lastWeekReset,
   }) {
     return User(
       id: id ?? this.id,
@@ -76,6 +81,7 @@ class User {
       viewHistory: viewHistory ?? this.viewHistory,
       dailyUnlockHistory: dailyUnlockHistory ?? this.dailyUnlockHistory,
       settings: settings ?? this.settings,
+      lastWeekReset: lastWeekReset ?? this.lastWeekReset,
     );
   }
 
@@ -94,6 +100,7 @@ class User {
         (key, value) => MapEntry(key, value.toIso8601String()),
       ),
       'settings': settings.toJson(),
+      'lastWeekReset': lastWeekReset?.toIso8601String(),
     };
   }
 
@@ -117,6 +124,9 @@ class User {
             {},
       ),
       settings: UserSettings.fromJson(map['settings'] ?? {}),
+      lastWeekReset: map['lastWeekReset'] != null
+          ? DateTime.parse(map['lastWeekReset'])
+          : null,
     );
   }
 }
