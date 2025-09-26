@@ -1,6 +1,6 @@
 class ImageService {
   constructor() {
-    this.serverUrl = 'http://localhost:3001';
+    this.serverUrl = 'http://localhost:8000';
   }
 
   // 檢查後端伺服器是否運行
@@ -21,7 +21,7 @@ class ImageService {
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await fetch(`${this.serverUrl}/api/upload-image`, {
+      const response = await fetch(`${this.serverUrl}/api/upload/image`, {
         method: 'POST',
         body: formData,
       });
@@ -53,7 +53,7 @@ class ImageService {
   // 刪除圖片
   async deleteImage(filename) {
     try {
-      const response = await fetch(`${this.serverUrl}/api/delete-image/${filename}`, {
+      const response = await fetch(`${this.serverUrl}/api/upload/image/${filename}`, {
         method: 'DELETE',
       });
 

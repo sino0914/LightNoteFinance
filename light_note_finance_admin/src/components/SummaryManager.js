@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SummaryForm from './SummaryForm';
 import SummaryCard from './SummaryCard';
 import QuickSummaryInput from './QuickSummaryInput';
 import { bookService } from '../services/bookService';
 import './SummaryManager.css';
 
-const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
+const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus, book }) => {
   const [showForm, setShowForm] = useState(false);
   const [editingSummary, setEditingSummary] = useState(null);
+  const [localSummaries, setLocalSummaries] = useState(summaries || []);
+
+  // 適配 API 資料格式 - 優先使用 book 對象的 isPublished
+  const isBookActive = book ? (book.isPublished !== undefined ? book.isPublished : true) : (bookStatus === 'active');
+
+  // 當外部傳入的summaries改變時，更新本地狀態
+  useEffect(() => {
+    setLocalSummaries(summaries || []);
+  }, [summaries]);
 
   const handleAddSummary = () => {
     setEditingSummary(null);
@@ -19,31 +28,40 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
     setShowForm(true);
   };
 
-  const handleFormSubmit = (content) => {
-    if (editingSummary) {
-      // 更新摘要（先刪除再新增，因為我們的資料結構比較簡單）
-      bookService.deleteSummary(bookId, editingSummary.id);
-      bookService.addSummary(bookId, content);
-    } else {
-      // 新增摘要
-      bookService.addSummary(bookId, content);
-    }
+  const handleFormSubmit = async (content) => {
+    try {
+      if (editingSummary) {
+        // 更新摘要（先刪除再新增，因為我們的資料結構比較簡單）
+        await bookService.deleteSummary(bookId, editingSummary.id);
+        const newSummary = await bookService.addSummary(bookId, content);
+        // 立即更新本地狀態
+        setLocalSummaries(prev => prev.filter(s => s.id !== editingSummary.id).concat(newSummary));
+      } else {
+        // 新增摘要
+        const newSummary = await bookService.addSummary(bookId, content);
+        // 立即更新本地狀態
+        setLocalSummaries(prev => [...prev, newSummary]);
+      }
 
-    setShowForm(false);
-    setEditingSummary(null);
-    onUpdate(); // 通知父組件更新
+      setShowForm(false);
+      setEditingSummary(null);
+      // 不需要調用onUpdate，保持摘要區域展開狀態
+    } catch (error) {
+      console.error('Error submitting summary:', error);
+      alert('操作失敗：' + error.message);
+    }
   };
 
-  const handleQuickAdd = (content) => {
-    return new Promise((resolve, reject) => {
-      try {
-        bookService.addSummary(bookId, content);
-        onUpdate(); // 通知父組件更新
-        resolve();
-      } catch (error) {
-        reject(error);
-      }
-    });
+  const handleQuickAdd = async (content) => {
+    try {
+      const newSummary = await bookService.addSummary(bookId, content);
+      // 立即更新本地狀態，提供即時反饋
+      setLocalSummaries(prev => [...prev, newSummary]);
+      // 不需要調用onUpdate，保持摘要區域展開狀態
+    } catch (error) {
+      console.error('Error adding summary:', error);
+      throw error;
+    }
   };
 
   const handleFormCancel = () => {
@@ -51,21 +69,26 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
     setEditingSummary(null);
   };
 
-  const handleDeleteSummary = (summaryId) => {
+  const handleDeleteSummary = async (summaryId) => {
     if (window.confirm('確定要刪除這個摘要嗎？此操作無法復原。')) {
-      bookService.deleteSummary(bookId, summaryId);
-      onUpdate(); // 通知父組件更新
+      try {
+        await bookService.deleteSummary(bookId, summaryId);
+        // 立即從本地狀態中移除摘要
+        setLocalSummaries(prev => prev.filter(summary => summary.id !== summaryId));
+        // 不需要調用onUpdate，保持摘要區域展開狀態
+      } catch (error) {
+        console.error('Error deleting summary:', error);
+        alert('刪除失敗：' + error.message);
+      }
     }
   };
-
-  const isBookActive = bookStatus === 'active';
 
   return (
     <div className="summary-manager">
       <div className="summary-manager-header">
         <h2>書籍摘要</h2>
         <div className="header-info">
-          <span className="summary-count">{summaries.length} 個摘要</span>
+          <span className="summary-count">{localSummaries.length} 個摘要</span>
           {false && (
             <button className="btn btn-primary" onClick={handleAddSummary}>
               新增摘要
@@ -96,7 +119,7 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
       )}
 
       <div className="summaries-container">
-        {summaries.length === 0 ? (
+        {localSummaries.length === 0 ? (
           <div className="empty-summaries">
             <div className="empty-icon">📝</div>
             <h3>還沒有任何摘要</h3>
@@ -114,7 +137,7 @@ const SummaryManager = ({ bookId, summaries, onUpdate, bookStatus }) => {
           </div>
         ) : (
           <div className="summaries-list">
-            {summaries.map((summary, index) => (
+            {localSummaries.map((summary, index) => (
               <SummaryCard
                 key={summary.id}
                 summary={summary}

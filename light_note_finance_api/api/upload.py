@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 import os
 import time
 import random
+import io
 from pathlib import Path
 from PIL import Image
 
@@ -17,6 +18,7 @@ ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
 # 確保上傳目錄存在
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+
 def validate_image(file: UploadFile) -> None:
     """驗證圖片檔案"""
     # 檢查檔案擴展名
@@ -24,14 +26,16 @@ def validate_image(file: UploadFile) -> None:
     if file_ext not in ALLOWED_EXTENSIONS:
         raise HTTPException(
             status_code=400,
-            detail=f"不支援的檔案格式。允許的格式: {', '.join(ALLOWED_EXTENSIONS)}"
+            detail=f"不支援的檔案格式。允許的格式: {', '.join(ALLOWED_EXTENSIONS)}",
         )
+
 
 def generate_unique_filename(original_filename: str) -> str:
     """生成唯一檔名"""
     file_ext = Path(original_filename).suffix.lower()
     unique_suffix = f"{int(time.time())}-{random.randint(10000, 99999)}"
     return f"book-cover-{unique_suffix}{file_ext}"
+
 
 @router.post("/image")
 async def upload_image(image: UploadFile = File(...)):
@@ -50,7 +54,7 @@ async def upload_image(image: UploadFile = File(...)):
         if len(file_content) > MAX_FILE_SIZE:
             raise HTTPException(
                 status_code=400,
-                detail=f"檔案過大。最大允許大小: {MAX_FILE_SIZE // (1024*1024)}MB"
+                detail=f"檔案過大。最大允許大小: {MAX_FILE_SIZE // (1024*1024)}MB",
             )
 
         # 驗證是否為有效圖片
@@ -69,19 +73,23 @@ async def upload_image(image: UploadFile = File(...)):
             f.write(file_content)
 
         # 建構圖片URL
-        image_url = f"/uploads/{filename}"
+        relative_url = f"/uploads/{filename}"
+        full_url = f"http://localhost:8000{relative_url}"
 
         return {
             "success": True,
             "message": "圖片上傳成功",
-            "imageUrl": f"http://localhost:8000{image_url}",
-            "filename": filename
+            "imageUrl": ".." + relative_url,  # 向後相容的完整URL
+            "relativePath": relative_url,  # 新的相對路徑選項
+            "fullUrl": full_url,  # 明確的完整URL
+            "filename": filename,
         }
 
     except HTTPException:
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"上傳失敗: {str(e)}")
+
 
 @router.delete("/image/{filename}")
 async def delete_image(filename: str):
@@ -100,16 +108,13 @@ async def delete_image(filename: str):
         # 刪除檔案
         os.remove(file_path)
 
-        return {
-            "success": True,
-            "message": "圖片已刪除",
-            "deleted_filename": filename
-        }
+        return {"success": True, "message": "圖片已刪除", "deleted_filename": filename}
 
     except HTTPException:
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"刪除失敗: {str(e)}")
+
 
 @router.get("/image/{filename}")
 async def get_image(filename: str):
@@ -132,6 +137,7 @@ async def get_image(filename: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"獲取圖片失敗: {str(e)}")
 
+
 @router.get("/images")
 async def list_images():
     """列出所有上傳的圖片"""
@@ -145,12 +151,17 @@ async def list_images():
             if os.path.isfile(file_path):
                 # 獲取檔案資訊
                 stat = os.stat(file_path)
-                images.append({
-                    "filename": filename,
-                    "size": stat.st_size,
-                    "created_at": stat.st_ctime,
-                    "url": f"/uploads/{filename}"
-                })
+                relative_url = f"/uploads/{filename}"
+                images.append(
+                    {
+                        "filename": filename,
+                        "size": stat.st_size,
+                        "created_at": stat.st_ctime,
+                        "url": f"http://localhost:8000{relative_url}",  # 向後相容
+                        "relativePath": relative_url,  # 新的相對路徑
+                        "fullUrl": f"http://localhost:8000{relative_url}",  # 明確的完整URL
+                    }
+                )
 
         # 按建立時間排序
         images.sort(key=lambda x: x["created_at"], reverse=True)
@@ -159,6 +170,3 @@ async def list_images():
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"列出圖片失敗: {str(e)}")
-
-# 需要在 main.py 中添加 io import
-import io

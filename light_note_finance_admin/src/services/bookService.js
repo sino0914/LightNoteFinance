@@ -1,98 +1,185 @@
-import booksData from '../data/books.json';
-import { createBook, createSummary, BookStatus } from '../types/book';
 
 class BookService {
   constructor() {
-    // 從JSON載入資料到localStorage（模擬資料庫）
-    this.initializeData();
+    this.API_BASE_URL = 'http://localhost:8000/api';
   }
 
-  initializeData() {
-    const existingData = localStorage.getItem('light_note_books');
-    if (!existingData) {
-      localStorage.setItem('light_note_books', JSON.stringify(booksData));
+  async getAllBooks() {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/books`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const books = await response.json();
+      return books || [];
+    } catch (error) {
+      console.error('Error fetching books:', error);
+      return [];
     }
   }
 
-  getAllBooks() {
-    const data = JSON.parse(localStorage.getItem('light_note_books') || '{"books": []}');
-    return data.books;
+  async getBookById(id) {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/books/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching book:', error);
+      return null;
+    }
   }
 
-  getBookById(id) {
-    const books = this.getAllBooks();
-    return books.find(book => book.id === id);
-  }
-
-  addBook(title, image = '') {
-    const books = this.getAllBooks();
-    const newBook = createBook(title, image);
-    books.push(newBook);
-    this.saveBooks(books);
-    return newBook;
-  }
-
-  updateBook(id, updates) {
-    const books = this.getAllBooks();
-    const bookIndex = books.findIndex(book => book.id === id);
-    if (bookIndex !== -1) {
-      books[bookIndex] = {
-        ...books[bookIndex],
-        ...updates,
-        updatedAt: new Date().toISOString()
+  async addBook(title, description = '', imageUrl = '') {
+    try {
+      const bookData = {
+        title,
+        description,
+        imageUrl,
+        summaries: []
       };
-      this.saveBooks(books);
-      return books[bookIndex];
+
+      const response = await fetch(`${this.API_BASE_URL}/books`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error adding book:', error);
+      throw error;
     }
-    return null;
   }
 
-  deleteBook(id) {
-    const books = this.getAllBooks();
-    const filteredBooks = books.filter(book => book.id !== id);
-    this.saveBooks(filteredBooks);
-    return true;
-  }
+  async updateBook(id, updates) {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/books/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updates)
+      });
 
-  toggleBookStatus(id) {
-    const book = this.getBookById(id);
-    if (book) {
-      const newStatus = book.status === BookStatus.ACTIVE ? BookStatus.INACTIVE : BookStatus.ACTIVE;
-      return this.updateBook(id, { status: newStatus });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error updating book:', error);
+      throw error;
     }
-    return null;
   }
 
-  addSummary(bookId, content) {
-    const book = this.getBookById(bookId);
-    if (book) {
-      const newSummary = createSummary(content);
-      book.summaries.push(newSummary);
-      this.updateBook(bookId, { summaries: book.summaries });
-      return newSummary;
-    }
-    return null;
-  }
+  async deleteBook(id) {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/books/${id}`, {
+        method: 'DELETE'
+      });
 
-  deleteSummary(bookId, summaryId) {
-    const book = this.getBookById(bookId);
-    if (book) {
-      const filteredSummaries = book.summaries.filter(summary => summary.id !== summaryId);
-      this.updateBook(bookId, { summaries: filteredSummaries });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       return true;
+    } catch (error) {
+      console.error('Error deleting book:', error);
+      throw error;
     }
-    return false;
   }
 
-  saveBooks(books) {
-    const data = { books };
-    localStorage.setItem('light_note_books', JSON.stringify(data));
+  async toggleBookStatus(id) {
+    try {
+      const book = await this.getBookById(id);
+      if (book) {
+        // 適配 API 資料格式 - 使用 isPublished 欄位
+        const currentStatus = book.isPublished !== undefined ? book.isPublished : true;
+        const updateData = {
+          isPublished: !currentStatus
+        };
+        return await this.updateBook(id, updateData);
+      }
+      return null;
+    } catch (error) {
+      console.error('Error toggling book status:', error);
+      throw error;
+    }
   }
 
-  // 為日後資料庫串接預留的方法
-  async syncWithDatabase() {
-    // TODO: 實作與線上資料庫同步的邏輯
-    console.log('Database sync not implemented yet');
+  async addSummary(bookId, content, order = 1) {
+    try {
+      const summaryData = {
+        content,
+        order
+      };
+
+      const response = await fetch(`${this.API_BASE_URL}/summaries/book/${bookId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(summaryData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error adding summary:', error);
+      throw error;
+    }
+  }
+
+  async deleteSummary(bookId, summaryId) {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/summaries/${bookId}/${summaryId}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error deleting summary:', error);
+      throw error;
+    }
+  }
+
+  async getSummariesByBookId(bookId) {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/summaries/book/${bookId}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching summaries:', error);
+      return [];
+    }
+  }
+
+  // 檢查API連接狀態
+  async checkApiConnection() {
+    try {
+      const response = await fetch(`${this.API_BASE_URL}/health`);
+      return response.ok;
+    } catch (error) {
+      console.error('API connection failed:', error);
+      return false;
+    }
   }
 }
 

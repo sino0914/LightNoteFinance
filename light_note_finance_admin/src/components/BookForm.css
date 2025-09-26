@@ -116,7 +116,7 @@
 
 .image-preview img {
   max-width: 100%;
-  max-height: 150px;
+  max-height: 240px;
   border-radius: 8px;
   border: 1px solid #e1e5e9;
   object-fit: cover;

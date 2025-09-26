@@ -102,7 +102,7 @@ const ImageUpload = ({ currentImage, onImageUploaded, onImageRemoved }) => {
     formData.append('image', file);
 
     try {
-      const response = await fetch('http://localhost:3001/api/upload-image', {
+      const response = await fetch('http://localhost:8000/api/upload/image', {
         method: 'POST',
         body: formData,
       });

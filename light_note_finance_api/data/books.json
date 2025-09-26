@@ -1,18 +1,89 @@
 [
   {
-    "title": "測試書籍",
-    "description": "這是一本測試用的書籍",
-    "imageUrl": "https://example.com/image.jpg",
+    "title": "測試書籍測試用",
+    "description": "這是一本測試用的書籍測試用",
+    "imageUrl": "../uploads/book-cover-1758853498-58416.png",
     "summaries": [
       {
         "content": "這是第一個測試摘要內容",
         "order": 1,
         "id": "90c17285-bfd0-4aa0-a61a-4c706ccf3cd9",
         "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
+      },
+      {
+        "content": "新增的摘要",
+        "order": 1,
+        "id": "968448f9-01fa-44cc-929f-8d35c28e3047",
+        "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
+      },
+      {
+        "content": "這是第二個新增的摘要",
+        "order": 1,
+        "id": "0d53b217-03ca-434d-bf0e-d5be09835675",
+        "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
+      },
+      {
+        "content": "這麼厲害的嗎?",
+        "order": 1,
+        "id": "3f482a0b-47a2-4433-b989-bb3897d99553",
+        "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
+      },
+      {
+        "content": "真的假的",
+        "order": 1,
+        "id": "47299563-2fdf-41ac-b050-2f96831d1f19",
+        "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
+      },
+      {
+        "content": "測試送出",
+        "order": 1,
+        "id": "2ce07076-e74c-45bc-af49-85999008b2d2",
+        "bookId": "5ac0a60b-d884-4ded-ad18-648bde4719f8"
       }
     ],
     "id": "5ac0a60b-d884-4ded-ad18-648bde4719f8",
     "createdAt": "2025-09-25T19:48:18.035392",
-    "updatedAt": "2025-09-25T19:48:41.180688"
+    "updatedAt": "2025-09-26T11:29:13.802304",
+    "isPublished": true
+  },
+  {
+    "title": "這是新的一本書",
+    "description": "這是個是書籍的描述",
+    "imageUrl": "/uploads/book-cover-1758857384-25193.png",
+    "summaries": [
+      {
+        "content": "第一個描述",
+        "order": 1,
+        "id": "8fc213c1-db4a-4eaa-b95b-0d52756a78ad",
+        "bookId": "ed297661-4f13-485b-bf45-53ebe80066a6"
+      },
+      {
+        "content": "新增新增描述",
+        "order": 1,
+        "id": "7a1e8c03-935f-4796-b858-12d202e454dc",
+        "bookId": "ed297661-4f13-485b-bf45-53ebe80066a6"
+      }
+    ],
+    "id": "ed297661-4f13-485b-bf45-53ebe80066a6",
+    "createdAt": "2025-09-26T11:29:45.721494",
+    "updatedAt": "2025-09-26T11:30:16.330553"
+  },
+  {
+    "title": "第二本新書",
+    "description": "這是下一個書籍的部分",
+    "imageUrl": "../uploads/book-cover-1758857992-87965.png",
+    "summaries": [],
+    "id": "a2b5330e-4028-4dbb-959a-6de3bc537397",
+    "createdAt": "2025-09-26T11:39:57.397428",
+    "updatedAt": "2025-09-26T11:39:57.397579"
+  },
+  {
+    "title": "第四本書",
+    "description": "這個是第四本書",
+    "imageUrl": "../uploads/book-cover-1758859190-16680.png",
+    "summaries": [],
+    "id": "1aa42827-a044-4abc-82c3-0285b3d0a958",
+    "createdAt": "2025-09-26T11:59:55.999551",
+    "updatedAt": "2025-09-26T11:59:55.999848"
   }
 ]

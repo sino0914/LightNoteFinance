@@ -9,14 +9,25 @@ const BookList = ({ onBookSelect }) => {
   const [showForm, setShowForm] = useState(false);
   const [editingBook, setEditingBook] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     loadBooks();
   }, []);
 
-  const loadBooks = () => {
-    const allBooks = bookService.getAllBooks();
-    setBooks(allBooks);
+  const loadBooks = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const allBooks = await bookService.getAllBooks();
+      setBooks(allBooks);
+    } catch (err) {
+      setError('載入書籍資料失敗');
+      console.error('Error loading books:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleAddBook = () => {
@@ -29,15 +40,21 @@ const BookList = ({ onBookSelect }) => {
     setShowForm(true);
   };
 
-  const handleFormSubmit = (bookData) => {
-    if (editingBook) {
-      bookService.updateBook(editingBook.id, bookData);
-    } else {
-      bookService.addBook(bookData.title, bookData.image);
+  const handleFormSubmit = async (bookData) => {
+    try {
+      setError(null);
+      if (editingBook) {
+        await bookService.updateBook(editingBook.id, bookData);
+      } else {
+        await bookService.addBook(bookData.title, bookData.description, bookData.imageUrl);
+      }
+      await loadBooks();
+      setShowForm(false);
+      setEditingBook(null);
+    } catch (err) {
+      setError('儲存書籍資料失敗');
+      console.error('Error saving book:', err);
     }
-    loadBooks();
-    setShowForm(false);
-    setEditingBook(null);
   };
 
   const handleFormCancel = () => {
@@ -45,15 +62,27 @@ const BookList = ({ onBookSelect }) => {
     setEditingBook(null);
   };
 
-  const handleToggleStatus = (bookId) => {
-    bookService.toggleBookStatus(bookId);
-    loadBooks();
+  const handleToggleStatus = async (bookId) => {
+    try {
+      setError(null);
+      await bookService.toggleBookStatus(bookId);
+      await loadBooks();
+    } catch (err) {
+      setError('切換書籍狀態失敗');
+      console.error('Error toggling status:', err);
+    }
   };
 
-  const handleDeleteBook = (bookId) => {
+  const handleDeleteBook = async (bookId) => {
     if (window.confirm('確定要刪除這本書嗎？這將會永久刪除書籍及其所有摘要。')) {
-      bookService.deleteBook(bookId);
-      loadBooks();
+      try {
+        setError(null);
+        await bookService.deleteBook(bookId);
+        await loadBooks();
+      } catch (err) {
+        setError('刪除書籍失敗');
+        console.error('Error deleting book:', err);
+      }
     }
   };
 
@@ -63,11 +92,31 @@ const BookList = ({ onBookSelect }) => {
 
   const filteredBooks = books.filter(book => {
     if (filter === 'all') return true;
-    return book.status === filter;
+    // 適配 API 資料格式
+    const bookStatus = book.isPublished !== undefined ? (book.isPublished ? 'active' : 'inactive') : (book.status || 'active');
+    return bookStatus === filter;
   });
+
+  if (loading) {
+    return (
+      <div className="book-list-container">
+        <div className="loading-state">
+          <h3>載入中...</h3>
+          <p>正在載入書籍資料</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="book-list-container">
+      {error && (
+        <div className="error-message">
+          <p>{error}</p>
+          <button onClick={loadBooks} className="btn btn-secondary">重新載入</button>
+        </div>
+      )}
+
       <div className="book-list-header">
         <h1>書籍管理</h1>
         <div className="header-actions">
@@ -93,11 +142,14 @@ const BookList = ({ onBookSelect }) => {
         </div>
         <div className="stat-card">
           <h3>啟用中</h3>
-          <p>{books.filter(b => b.status === 'active').length}</p>
+          <p>{books.filter(b => {
+            const bookStatus = b.isPublished !== undefined ? (b.isPublished ? 'active' : 'inactive') : (b.status || 'active');
+            return bookStatus === 'active';
+          }).length}</p>
         </div>
         <div className="stat-card">
           <h3>總摘要數</h3>
-          <p>{books.reduce((total, book) => total + book.summaries.length, 0)}</p>
+          <p>{books.reduce((total, book) => total + (book.summaries ? book.summaries.length : 0), 0)}</p>
         </div>
       </div>
 

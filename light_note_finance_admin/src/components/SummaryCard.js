@@ -41,9 +41,6 @@ const SummaryCard = ({ summary, index, onEdit, onDelete, isEditable }) => {
     <div className={`summary-card ${!isEditable ? 'readonly' : ''}`}>
       <div className="summary-header">
         <div className="summary-index">#{index}</div>
-        <div className="summary-meta">
-          <span className="summary-date">{formatDate(summary.createdAt)}</span>
-        </div>
         {isEditable && (
           <div className="summary-actions">
             <button

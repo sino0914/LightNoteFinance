@@ -25,6 +25,7 @@ class BookModel(BaseModel):
     isFavorite: bool = False
     unlockedAt: Optional[str] = None
     isCompleted: bool = False
+    isPublished: bool = True
 
 class BookUpdateModel(BaseModel):
     title: Optional[str] = None
@@ -35,6 +36,7 @@ class BookUpdateModel(BaseModel):
     isFavorite: Optional[bool] = None
     unlockedAt: Optional[str] = None
     isCompleted: Optional[bool] = None
+    isPublished: Optional[bool] = None
 
 @router.get("/", response_model=List[Dict[str, Any]])
 async def get_all_books():
