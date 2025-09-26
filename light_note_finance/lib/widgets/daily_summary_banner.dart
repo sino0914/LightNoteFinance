@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 import '../models/book.dart';
 import '../providers/book_provider.dart';
+import '../providers/user_provider.dart';
 import '../constants/app_constants.dart';
 
 class DailySummaryBanner extends StatefulWidget {
@@ -20,6 +22,36 @@ class DailySummaryBanner extends StatefulWidget {
 class _DailySummaryBannerState extends State<DailySummaryBanner> {
   late PageController _pageController;
   int _currentIndex = 0;
+
+  // 效能優化：防重複標記和防抖動
+  final Set<String> _processingSummaries = {};
+  final Set<String> _markedSummaries = {};
+
+  String _convertImageUrlToAssetPath(String? imageUrl) {
+    if (imageUrl == null || imageUrl.isEmpty) {
+      return 'assets/images/default-book.png';
+    }
+
+    // 如果是 ../uploads/ 格式，轉換為 assets/uploads/
+    if (imageUrl.startsWith('../uploads/')) {
+      final filename = imageUrl.replaceFirst('../uploads/', '');
+      return 'assets/uploads/$filename';
+    }
+
+    // 如果是 /uploads/ 格式，轉換為 assets/uploads/
+    if (imageUrl.startsWith('/uploads/')) {
+      final filename = imageUrl.replaceFirst('/uploads/', '');
+      return 'assets/uploads/$filename';
+    }
+
+    // 如果已經是 assets/ 格式，直接返回
+    if (imageUrl.startsWith('assets/')) {
+      return imageUrl;
+    }
+
+    // 其他情況，假設是檔名，加上 assets/uploads/ 前綴
+    return 'assets/uploads/$imageUrl';
+  }
 
   @override
   void initState() {
@@ -90,13 +122,16 @@ class _DailySummaryBannerState extends State<DailySummaryBanner> {
   }
 
   Widget _buildSummaryCard(Summary summary) {
-    return GestureDetector(
-      onTap: () => _readSummary(context, summary),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
+    return VisibilityDetector(
+      key: Key('summary_${summary.id}'),
+      onVisibilityChanged: (info) => _onSummaryVisibilityChanged(summary, info),
+      child: GestureDetector(
+        onTap: () => _readSummary(context, summary),
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
@@ -190,6 +225,7 @@ class _DailySummaryBannerState extends State<DailySummaryBanner> {
           ],
         ),
       ),
+    ),
     );
   }
 
@@ -211,7 +247,7 @@ class _DailySummaryBannerState extends State<DailySummaryBanner> {
               ),
               child: Row(
                 children: [
-                  // 書籍圖標
+                  // 書籍圖片
                   Container(
                     width: 60,
                     height: 80,
@@ -223,11 +259,26 @@ class _DailySummaryBannerState extends State<DailySummaryBanner> {
                         width: 1,
                       ),
                     ),
-                    child: const Icon(
-                      Icons.book,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+                    clipBehavior: Clip.hardEdge,
+                    child: book.imageUrl.isNotEmpty
+                        ? Image.asset(
+                            _convertImageUrlToAssetPath(book.imageUrl),
+                            width: 60,
+                            height: 80,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return const Icon(
+                                Icons.book,
+                                color: Colors.white,
+                                size: 30,
+                              );
+                            },
+                          )
+                        : const Icon(
+                            Icons.book,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                   ),
 
                   const SizedBox(width: 16),
@@ -274,6 +325,61 @@ class _DailySummaryBannerState extends State<DailySummaryBanner> {
         );
       },
     );
+  }
+
+  // 處理摘要可見性變化
+  void _onSummaryVisibilityChanged(Summary summary, VisibilityInfo info) {
+    // 效能優化：只有當可見度達到50%且停留時才觸發
+    if (info.visibleFraction >= 0.5) {
+      _scheduleAutoMarkAsRead(summary);
+    }
+  }
+
+  // 延遲自動標記，實現停留觸發而非滑動過程觸發
+  void _scheduleAutoMarkAsRead(Summary summary) {
+    // 防重複處理
+    if (_processingSummaries.contains(summary.id) ||
+        _markedSummaries.contains(summary.id) ||
+        summary.isRead) {
+      return;
+    }
+
+    _processingSummaries.add(summary.id);
+
+    // 延遲500ms實現"停留"效果，避免快速滑動時觸發
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted &&
+          _processingSummaries.contains(summary.id) &&
+          !summary.isRead &&
+          !_markedSummaries.contains(summary.id)) {
+        _markSummaryAsReadAutomatically(summary);
+      }
+      _processingSummaries.remove(summary.id);
+    });
+  }
+
+  // 自動標記摘要為已讀
+  Future<void> _markSummaryAsReadAutomatically(Summary summary) async {
+    if (_markedSummaries.contains(summary.id) || summary.isRead) return;
+
+    _markedSummaries.add(summary.id);
+
+    try {
+      final bookProvider = Provider.of<BookProvider>(context, listen: false);
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+      // 標記為已讀
+      await bookProvider.markSummaryAsRead(summary.id);
+
+      // 更新週度活動
+      await userProvider.updateWeeklyActivity();
+
+      print('Auto-marked summary as read: ${summary.id}');
+    } catch (e) {
+      // 失敗時從集合中移除，允許重試
+      _markedSummaries.remove(summary.id);
+      print('Failed to auto-mark summary: $e');
+    }
   }
 
   Future<void> _readSummary(BuildContext context, Summary summary) async {

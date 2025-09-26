@@ -227,8 +227,7 @@ class BookProvider extends ChangeNotifier {
         throw Exception('書籍不存在');
       }
 
-      // 找到該書籍中已解鎖的摘要
-      final unlockedSummaries = book.summaries.where((s) => s.isUnlocked).toList();
+      // 找到該書籍中未解鎖的摘要
       final lockedSummaries = book.summaries.where((s) => !s.isUnlocked).toList();
 
       if (lockedSummaries.isEmpty) {

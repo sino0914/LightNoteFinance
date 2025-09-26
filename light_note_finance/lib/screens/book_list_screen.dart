@@ -110,7 +110,7 @@ class _BookListScreenState extends State<BookListScreen> {
 
   Widget _buildBookGrid(List<Book> books) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 140),
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

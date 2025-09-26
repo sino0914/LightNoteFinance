@@ -101,7 +101,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     final groupedHistory = _groupHistoryByDate();
 
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 140),
       itemCount: groupedHistory.length,
       itemBuilder: (context, index) {
         final date = groupedHistory.keys.elementAt(index);

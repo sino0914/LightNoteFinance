@@ -168,7 +168,7 @@ class _PointsScreenState extends State<PointsScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 140),
               itemCount: _storeItems.length,
               itemBuilder: (context, index) {
                 return _buildStoreItem(_storeItems[index]);
