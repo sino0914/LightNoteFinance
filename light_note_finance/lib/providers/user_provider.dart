@@ -160,7 +160,9 @@ class UserProvider extends ChangeNotifier {
       await _userRepository.updateWeeklyActivity(_user!.id);
 
       final today = DateTime.now();
-      final weekday = AppConstants.weekdays[today.weekday % 7];
+      // 正確計算週間索引: DateTime.weekday = 1-7 (週一到週日)，但weekdays數組從週日開始
+      final weekdayIndex = today.weekday == 7 ? 0 : today.weekday;
+      final weekday = AppConstants.weekdays[weekdayIndex];
 
       // 檢查是否需要重置週度活動
       final needsReset = _needsWeeklyReset(today);

@@ -378,7 +378,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     for (int i = 0; i < 7; i++) {
       final date = weekStart.add(Duration(days: i));
-      final weekdayKey = AppConstants.weekdays[i];
+      // 正確計算週間索引: DateTime.weekday = 1-7 (週一到週日)，但weekdays數組從週日開始
+      final weekdayIndex = date.weekday == 7 ? 0 : date.weekday;
+      final weekdayKey = AppConstants.weekdays[weekdayIndex];
       final hasActivity = user?.weeklyActivity[weekdayKey] ?? false;
       final isToday = date.day == now.day && date.month == now.month && date.year == now.year;
 
